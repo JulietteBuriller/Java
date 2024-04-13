@@ -1,4 +1,28 @@
 
+## Projet2024 base
+  * src
+    * exploration
+      * [CaisseGrenades](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/CaisseGrenades.java)
+      * [Categorie](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Categorie.java)
+      * [DetecteurMines](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/DetecteurMines.java)
+      * [Direction](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Direction.java)
+      * [Exploration](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Exploration.java)
+      * [Jeu](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Jeu.java)
+      * [Joueur](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Joueur.java)
+      * [LesOutils](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/LesOutils.java)
+      * [Lire](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Lire.java)
+      * [Mine](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Mine.java)
+      * [Objet](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Objet.java)
+      * [Outil](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Outil.java)
+      * [Plateau](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Plateau.java)
+      * [Position](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Position.java)
+      * [ReserveEnergie](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/ReserveEnergie.java)
+      * [Salle](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/Salle.java)
+      * [ScannerUnidirectionnel](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/src/exploration/ScannerUnidirectionnel.java)
+  * test
+    * exploration
+      * [DirectionTest](https://github.com/TheAlgorithms/Java/blob/master/Projet2024_base/test/exploration/DirectionTest.java)
+
 ## src
   * main
     * java
