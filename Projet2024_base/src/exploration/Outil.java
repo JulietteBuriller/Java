@@ -4,9 +4,6 @@
  */
 package exploration;
 
-import exploration.Joueur;
-import exploration.Objet;
-
 /**
  *
  * @author jo
@@ -17,16 +14,14 @@ public abstract class Outil extends Objet
     private String descriptif;
 
     public int getConsommationEnergetique(){return this.conso;}
-    protected void setConsommationEnergetique(int conso){this.conso = conso;}
     public String getDescriptif(){return this.descriptif;}
-    protected void setDescriptif(String descriptif){this.descriptif = descriptif;}
+    
+    private void setConsommationEnergetique(int conso){this.conso = conso;}
+    private void setDescriptif(String descriptif){this.descriptif = descriptif;}
 
     public boolean isUtilisablePar(Joueur j)
     { 
-        if (j.getUEnergie()>=this.conso){
-            return true;
-        }
-        else return false;
+        return j.getUEnergie()>=this.conso;
     }
     
     /**
@@ -43,8 +38,7 @@ public abstract class Outil extends Objet
            if (this.isUtilisablePar(j))
            {
             this.activation(j);
-            int energie=j.getUEnergie();
-            energie = energie - this.conso;
+            j.setUEnergie(j.getUEnergie()- this.conso);
         }
         else System.out.println("vous n'avez pas assez d'énergie pour utiliser cet outil.");
         
