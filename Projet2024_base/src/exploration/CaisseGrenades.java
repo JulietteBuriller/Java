@@ -13,6 +13,29 @@ public class CaisseGrenades extends Objet
     private final static int MAX = 9;// nombre maximal dans les caisses de grenades trouvées dans les salles
     private int nbgren;
 
+     public CaisseGrenades(int nbGrenades)
+    {
+        super("<symbole>","nom");
+        setNbgren(nbGrenades);
+        //suite code
+    }
+    
+   public CaisseGrenades()
+    {
+        this((int)(1+10*Math.random()));
+    }
+    
+    public static int getMAX() {
+        return MAX;
+    }
+    public int getNbgren() {
+        return nbgren;
+    }
+
+    private void setNbgren(int nbgren) {
+        this.nbgren = nbgren;
+    }
+
     @Override
    public void interaction(Joueur j)
     {
@@ -22,10 +45,12 @@ public class CaisseGrenades extends Objet
             if (this.nbgren>=g){
                 grenade=grenade+g;
                 this.nbgren=this.nbgren-g;
+                j.setNbgrenades(grenade);
             }
             else {
                 grenade=grenade+this.nbgren;
                 this.nbgren=0;
+                j.setNbgrenades(grenade);
                 System.out.println("Seulement "+this.nbgren+" grenades ont été ajoutées car il n'en restait plus assez dans la réserve");  
             }
         }
@@ -37,14 +62,5 @@ public class CaisseGrenades extends Objet
         */
     }
 
-    public CaisseGrenades(int nbGrenades)
-    {
-        super("<symbole>","nom");
-        //suite code
-    }
-    
-   public CaisseGrenades()
-    {
-        this((int)(1+10*Math.random()));
-    }
+   
 }
