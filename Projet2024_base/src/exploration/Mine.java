@@ -13,6 +13,7 @@ public class Mine extends Objet
     @Override
     public void interaction(Joueur j)
     {
+        j.setPerdant(true);
     }
 
     public Mine(){super("*","Mine");}
