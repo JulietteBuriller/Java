@@ -13,6 +13,9 @@ import java.util.ArrayList;
 public class Salle
 {    
     private boolean visible;
+    private Position position;
+    private Plateau plateau;
+    private Objet objet;
 
     /**
      * restitue true si la salle est visible
@@ -27,18 +30,15 @@ public class Salle
         this.visible = visible;
     }
     
-    private Position position;
     public Position getPosition(){return this.position;}
     private void setPosition(Position position){this.position = position;}
     
-    private Plateau plateau;
     public Plateau getPlateau()
     {
         return this.plateau;
     }
     private void setPlateau(Plateau p){this.plateau = p;}
 
-    private Objet objet;
 
     /**
      * Restitue la référence à l'objet contenu dans la salle… ou null
@@ -64,7 +64,13 @@ public class Salle
      */
     public void setAcces(Direction d)
     {
-        //code
+        if (this.isPossible(d)==false && this.getVoisine(d) != null) //si la liste de directions ne contient pas d (l'acces n'existe pas encore) et si la salle voisine existe
+        {
+            this.acces.add(d);
+            this.getVoisine(d).acces.add(d.getInverse());
+            this.setVisible(true);
+        }
+        else System.out.print("erreur");
     }
     public String getSymbole()
     {
