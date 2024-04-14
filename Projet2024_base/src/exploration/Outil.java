@@ -14,16 +14,19 @@ import exploration.Objet;
 public abstract class Outil extends Objet
 {    
     private int conso;
+    private String descriptif;
+
     public int getConsommationEnergetique(){return this.conso;}
     protected void setConsommationEnergetique(int conso){this.conso = conso;}
-
-    private String descriptif;
     public String getDescriptif(){return this.descriptif;}
     protected void setDescriptif(String descriptif){this.descriptif = descriptif;}
 
     public boolean isUtilisablePar(Joueur j)
-    {
-        return true;// à remplacer par la vérification que le crédit énergétique du joueur est suffisant pour utiliser l'outil
+    { 
+        if (j.getUEnergie()>=this.conso){
+            return true;
+        }
+        else return false;
     }
     
     /**
@@ -37,6 +40,14 @@ public abstract class Outil extends Objet
     
     public void utilise(Joueur j)
     {
+           if (this.isUtilisablePar(j))
+           {
+            this.activation(j);
+            int energie=j.getUEnergie();
+            energie = energie - this.conso;
+        }
+        else System.out.println("vous n'avez pas assez d'énergie pour utiliser cet outil.");
+        
         /*
             Utilisation de l'outil. Il faut vérifier que le joueur a assez d'énergie (Sinon, faire un message d'erreur),
             activer l'outil (différemment suivant l'outil) et diminuer l'énergie du joueur en conséquence
