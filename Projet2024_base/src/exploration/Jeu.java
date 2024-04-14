@@ -44,6 +44,8 @@ public class Jeu
     
     public Jeu(int nbLig, int nbCol, int proportionVides, Categorie... listeCategories)
     {
+        Plateau p =new Plateau(nbLig,nbCol,this);
+        this.joue();
         /*  initialisations du jeu : création d'un plateau et exécution de joue()
             nbLig et nbCol sont les tailles du plateau (Elles peuvent être fixes au moins au début)
         */
