@@ -13,12 +13,14 @@ import java.util.Objects;
 public abstract class Objet
 {
     private String symbole;
-    public String getSymbole(){return this.symbole;}
-    private void setSymbole(String symbole){this.symbole = symbole;}
-   
     private String nature;
+
+    public String getSymbole(){return this.symbole;}
     public String getNature(){return this.nature;}
+    
     private void setNature(String nature){this.nature = nature;}
+    private void setSymbole(String symbole){this.symbole = symbole;}
+
     
     public abstract void interaction(Joueur j);
 
