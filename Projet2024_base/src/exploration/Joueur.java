@@ -14,11 +14,25 @@ public class Joueur
     private LesOutils outils;
     private boolean perdant;
     private Position position;
+    private int nbgrenades=10;
+    private int UEnergie =20;
     /**
      * Position du joueur
      * @return une référence à une position
      */
-    
+    public int getNbgrenades(){
+        return this.nbgrenades;
+    }
+    public void setNbgrenades(int nbgrenades){
+        this.nbgrenades=nbgrenades;
+    }
+
+    public int getUEnergie(){
+        return this.uEnergie;
+    }
+    public void setUEnergie(int uenergie){
+        this.uEnergie=uenergie;
+    }
     
     
     public String getNom(){
@@ -70,17 +84,24 @@ public class Joueur
      */
     
     
-    public Joueur(String nom,Position position){
-        //code
-    }
-    public Joueur(Position position){
-        //code
-    }
-    
-    
-    
-    public void avance(Direction d)
+    public Joueur(String nom,Position position)
     {
+        setNom(nom);
+        setPosition(position);
+    }
+    public Joueur(Position position)
+    {
+        setNom();
+        setPosition(position);
+    }
+    
+    
+   public void avance(Direction d)
+    {
+        if (this.getPosition().getSuivante(d).isValide() && this.getSalle().isPossible(d)){
+            this.position=this.getPosition().getSuivante(d);
+        }
+        else System.out.println("vous ne pouvez pas avancer dans cette direction");
         /*
             code : il faut gérer la sortie du plateau, le fait qu'un mur soit ou non ouvert et remettre à jour la position du joueur
         */
@@ -93,15 +114,18 @@ public class Joueur
     }    
     
 
+  
     public void lanceGrenade(Direction d)
     {
-        /*
-            La grenade est perdue si un mur est déjà ouvert dans la direction spécifiée
-            Sinon,un accès est ajouté à la salle courante vers la salle contiguë dans la direction d (et réciproquement)
-            et le joueur est « aspiré » dans la salle nouvellement ouverte. La réserve de grenades du joueur est décrémentée
-        */
+        if (this.getSalle().isPossible(d)==true){
+            System.out.println("Un mur est déjà ouvert dans cette direction. Vous avez perdu votre grenade");
+        }
+        else{
+            this.getSalle().setAcces(d);
+            this.avance (d);
+            this.nbgrenades--;
+        }
     }
- 
     
     
 }
