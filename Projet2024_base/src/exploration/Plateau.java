@@ -22,6 +22,11 @@ public class Plateau
     public void setVisible(boolean visible){this.visible = visible;}
 
     private Salle[][] grille;
+
+    private void setGrille(Salle[][] grille) {
+        this.grille = grille;
+    }
+    
     public int getNbLig(){return this.grille.length;}
     public int getNbCol(){return this.grille[0].length;}
     public int getNbSalles(){return this.getNbCol()*this.getNbLig();}
@@ -52,7 +57,7 @@ public class Plateau
     {
         placeSalle(new Salle(p,this,o));       
     }
-    public void setNouvelleSalle(Position p){setNouvelleSalle(p, null);}
+    private void setNouvelleSalle(Position p){setNouvelleSalle(p, null);}
     
     private Joueur joueur;
     public Joueur getJoueur(){return this.joueur;}
@@ -67,6 +72,18 @@ public class Plateau
 
     public Plateau(int nbLig, int nbCol, Jeu jeu)
     {
+        setJeu(jeu);
+        Salle[][] grille1;
+        grille1 = new Salle [nbLig][nbCol];
+        for(int i=0;i<nbLig;i++) // Boucle pour d´ecrire les lignes
+            for(int j=0;j<nbCol;j++) // Boucle pour d´ecrire les colonnes
+            { setNouvelleSalle(new Position(i,j,this));
+                }
+        setGrille(grille1);
+        Joueur j =new Joueur(new Position((grille.length/2),this));
+        j.setNom();
+        j.getSalle().setVisible(true);
+        setVisible(true);
         // Crée un joueur et initialise le plateau selon les spécifications du jeu (Gros boulot)
     }
 }
