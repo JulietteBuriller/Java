@@ -40,6 +40,7 @@ public class ScannerUnidirectionnel extends Outil
     @Override
     public void activation(Joueur j)
     {
+        this.setDirectionCourante();
         /* recherche dans une direction demandée au joueur jusqu'à tomber sur une position null (en dehors de l'enceinte)
             ou une salle contenant un objet. Le nombre de salles parcourues est affiché à 20% près
         */
