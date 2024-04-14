@@ -15,7 +15,7 @@ public class Joueur
     private boolean perdant;
     private Position position;
     private int nbgrenades=10;
-    private int UEnergie =20;
+    private int uEnergie =20;
     /**
      * Position du joueur
      * @return une référence à une position
