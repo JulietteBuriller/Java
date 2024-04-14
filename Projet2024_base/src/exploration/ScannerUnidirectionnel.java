@@ -12,13 +12,13 @@ package exploration;
 public class ScannerUnidirectionnel extends Outil
 {
     private static final int MARGE_ERREUR = 20;
-    private int getMarge(){return ScannerUnidirectionnel.MARGE_ERREUR;}
-    
     private Direction directionCourante;
-    public Direction getDirectionCourante()
-    {
+    
+    private int getMarge(){return ScannerUnidirectionnel.MARGE_ERREUR;}
+    public Direction getDirectionCourante(){
         return this.directionCourante;
     }
+    
     protected void setDirectionCourante()
     {
         do
@@ -26,13 +26,17 @@ public class ScannerUnidirectionnel extends Outil
             this.directionCourante = new Direction(Lire.S("Entrez une direction en combinant 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
         }while(!directionCourante.isValide());
     }
+    
     public ScannerUnidirectionnel()
     {
         super
         (
                 "<symbole à afficher dans le plateau>",
-                "<Nom de l'outil pour les affichages>",
-                "<Descriptif de la fonctionnalité de l'outil>",
+                "Scanner Unidirectionnel",
+                " détecte à travers les murs la distance —\n" +
+                "en nombre de salles vides traversée — à laquelle se situe le premier objet — ou le mur du\n" +
+                "plateau — dans une direction donnée. L'estimation de la distance est approximative : elle\n" +
+                "est à 20% de la distance près . L'utilisation de cet outil nécessite 2 unités d'énergie. ",
                 2//coût énergétique de l'utilisation du scanner
         );
     }    
@@ -45,4 +49,3 @@ public class ScannerUnidirectionnel extends Outil
             ou une salle contenant un objet. Le nombre de salles parcourues est affiché à 20% près
         */
     }
-}
