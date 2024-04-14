@@ -11,14 +11,29 @@ package exploration;
 public class CaisseGrenades extends Objet
 {
     private final static int MAX = 9;// nombre maximal dans les caisses de grenades trouvées dans les salles
+    private int nbgren;
 
     @Override
-    public void interaction(Joueur j)
+   public void interaction(Joueur j)
     {
+        int grenade=j.getNbgrenades();
+        if (this.nbgren!=0){
+            int g=Lire.i("Rentrer un nombre de grenades : ");
+            if (this.nbgren>=g){
+                grenade=grenade+g;
+                this.nbgren=this.nbgren-g;
+            }
+            else {
+                grenade=grenade+this.nbgren;
+                this.nbgren=0;
+                System.out.println("Seulement "+this.nbgren+" grenades ont été ajoutées car il n'en restait plus assez dans la réserve");  
+            }
+        }
+        else System.out.println("il ne reste plus de grenades dans cette réserve");
+        
         /* S'il reste des grenades dans cette réserve,
            propose au joueur d'en prendre un certain nombre,
            ce qui augmente les grenades du joueur et diminue d'autant cette réserve
-           test
         */
     }
 
@@ -28,8 +43,8 @@ public class CaisseGrenades extends Objet
         //suite code
     }
     
-    public CaisseGrenades()
+   public CaisseGrenades()
     {
-        this(0/*nb de grenades tirées au hasard entre 1 et CaisseGrenades.MAX pour remplacer 0*/);
+        this((int)(1+10*Math.random()));
     }
 }
