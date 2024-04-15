@@ -45,7 +45,13 @@ public class ScannerUnidirectionnel extends Outil
     public void activation(Joueur j)
     {
         this.setDirectionCourante();
-        /* recherche dans une direction demandée au joueur jusqu'à tomber sur une position null (en dehors de l'enceinte)
-            ou une salle contenant un objet. Le nombre de salles parcourues est affiché à 20% près
-        */
+        int salle=0;
+        while (j.getPosition()!=null && j.getSalle().isVide()){
+            j.getPosition().getSuivante(directionCourante);
+            salle=salle+1;
+        }
+        int marge1=Math.abs(salle-(this.getMarge()/100)*salle);
+        int marge2=Math.abs(salle+(this.getMarge()/100)*salle);
+
+        System.out.println("Le nombre de salles parcourues est compris entre "+marge1+" et "+marge2+".");
     }
