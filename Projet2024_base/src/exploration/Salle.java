@@ -16,6 +16,8 @@ public class Salle
     private Position position;
     private Plateau plateau;
     private Objet objet;
+    private ArrayList<Direction> acces;
+
 
     /**
      * restitue true si la salle est visible
@@ -53,7 +55,6 @@ public class Salle
         Gère les accès aux salles contigües (horizontalement et verticalement). Au départ, la salle est emmurée : aucun accès.
         Quand un mur est détruit, on crée un accès vers la salle contiguë et un accès inverse à partir de cette salle
     */
-    private ArrayList<Direction> acces;
     public boolean isPossible(Direction d){return acces.contains(d);}
     private void initAcces(){this.acces = new ArrayList<Direction>();}//Création d'une liste d'accès vide
 
