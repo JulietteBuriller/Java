@@ -31,12 +31,12 @@ public class ScannerUnidirectionnel extends Outil
     {
         super
         (
-                "<symbole à afficher dans le plateau>",
-                "Scanner Unidirectionnel",
-                " détecte à travers les murs la distance —\n" +
+                "☞1",
+                "Scanner unidirectionnel",
+                "Détecte à travers les murs la distance —\n" +
                 "en nombre de salles vides traversée — à laquelle se situe le premier objet — ou le mur du\n" +
                 "plateau — dans une direction donnée. L'estimation de la distance est approximative : elle\n" +
-                "est à 20% de la distance près . L'utilisation de cet outil nécessite 2 unités d'énergie. ",
+                "est à 20% de la distance près. L'utilisation de cet outil nécessite 2 unités d'énergie. ",
                 2//coût énergétique de l'utilisation du scanner
         );
     }    
