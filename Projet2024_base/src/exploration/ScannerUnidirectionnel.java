@@ -26,7 +26,10 @@ public class ScannerUnidirectionnel extends Outil
             this.directionCourante = new Direction(Lire.S("Entrez une direction en combinant 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
         }while(!directionCourante.isValide());
     }
-    
+      @Override
+    public void interaction(Joueur j){
+     j.recupere(this);
+    }
     public ScannerUnidirectionnel()
     {
         super
