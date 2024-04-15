@@ -60,6 +60,10 @@ public class Joueur
     public void setNom(String nom){
         this.nom = nom;
     }
+    public void setNom()
+    {
+        setNom(Lire.S("Quel est votre nom"));
+    }
 
     private void setOutils(LesOutils outils){
         this.outils = outils;
@@ -91,7 +95,7 @@ public class Joueur
     }
     public Joueur(Position position)
     {
-        setNom(" ");
+        setNom();
         setPosition(position);
     }
     
