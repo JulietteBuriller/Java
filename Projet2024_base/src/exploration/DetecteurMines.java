@@ -1,4 +1,5 @@
 /*
+ * /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -33,7 +34,7 @@ public class DetecteurMines extends Outil
         
         j.getPosition().getSuivante();
         for (int i=0;i<8;i++){
-            if((j.getSalle().getVoisine(new Direction(i)).getContenu()).equals(Mine))
+            if((j.getSalle().getVoisine(new Direction(i)).getContenu()).equals(new Mine()))
                 nb=nb+1;
         }
         System.out.println("il y a "+nb+" mines autour de vous.");
