@@ -56,13 +56,11 @@ public class Joueur
     }
      
      
-     
-    private void setNom(String nom){
+  
+    public void setNom(String nom){
         this.nom = nom;
     }
-    private void setNom(){
-        setNom(Lire.S("Quel est votre nom"));
-    }
+
     private void setOutils(LesOutils outils){
         this.outils = outils;
     }
@@ -75,6 +73,8 @@ public class Joueur
     }
     private void setPosition(Position position)
     {
+        this.position = position ;
+        this.getSalle().entree(this);
         // affectation de la position en déclenchant la méthode d'entrée de la salle
     }  
     /**
@@ -91,7 +91,7 @@ public class Joueur
     }
     public Joueur(Position position)
     {
-        setNom();
+        setNom(" ");
         setPosition(position);
     }
     
