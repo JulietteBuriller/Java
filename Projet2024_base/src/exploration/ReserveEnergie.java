@@ -14,7 +14,7 @@ public class ReserveEnergie extends Objet
     private int uenergie;
 
     public ReserveEnergie(int disponible){
-        super("<symbole>","nom");
+        super(disponible+"$","Reserve Energie");
         setUenergie(disponible);
     }
     
@@ -38,11 +38,11 @@ public class ReserveEnergie extends Objet
             int e=Lire.i("Rentrer un nombre d'unités d'énergie : ");
             
             if (e<=this.uenergie){
-                j.setUEnergie(j.getUEnergie+e);
+                j.setUEnergie(j.getUEnergie()+e);
                 this.uenergie=this.uenergie-e;
             }
             else {
-                j.setUEnergie(j.getUEnergie-this.UEnergie);
+                j.setUEnergie(j.getUEnergie()-this.uenergie);
                 System.out.println("Seulement "+this.uenergie+" unités d'énergie ont été ajoutées car il n'en restait plus assez dans la réserve.");  
                 this.uenergie=0;
                 }
@@ -54,4 +54,3 @@ public class ReserveEnergie extends Objet
            ce qui augmente l'énergie du joueur et diminue d'autant cette réserve
         */
     }
-
