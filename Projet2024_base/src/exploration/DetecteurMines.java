@@ -36,7 +36,7 @@ public class DetecteurMines extends Outil
             if((j.getSalle().getVoisine(new Direction(i)).getContenu()).equals(Mine))
                 nb=nb+1;
         }
-        System.out.println(nb);
+        System.out.println("il y a "+nb+" mines autour de vous.");
         
         
         
