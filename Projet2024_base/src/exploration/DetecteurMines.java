@@ -33,7 +33,7 @@ public class DetecteurMines extends Outil
         
         j.getPosition().getSuivante();
         for (int i=0;i<8;i++){
-            if((j.getSalle().getVoisine(Direction(i)).getContenu()).equals(Mine));
+            if((j.getSalle().getVoisine(new Direction(i)).getContenu()).equals(Mine))
                 nb=nb+1;
         }
         System.out.println(nb);
