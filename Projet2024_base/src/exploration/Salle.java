@@ -75,7 +75,9 @@ public class Salle
     }
     public String getSymbole()
     {
-        return "";// renvoie des espaces ou le toString de l'objet contenu dans la salle
+        if (this.isVide()) return "";
+        else return this.getContenu().toString();
+        // renvoie des espaces ou le toString de l'objet contenu dans la salle
     }
     
     public void entree(Joueur j)
