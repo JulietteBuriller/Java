@@ -15,7 +15,7 @@ public class CaisseGrenades extends Objet
 
     public CaisseGrenades(int nbGrenades)
     {
-        super("<symbole>","nom");
+        super(nbGrenades+"¤","grenade");
         setNbgren(nbGrenades);
         //suite code
     }
@@ -58,7 +58,4 @@ public class CaisseGrenades extends Objet
            ce qui augmente les grenades du joueur et diminue d'autant cette réserve
         */
     }
-      
-
-   
 }
