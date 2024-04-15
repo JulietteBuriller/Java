@@ -46,8 +46,9 @@ public class ScannerUnidirectionnel extends Outil
     {
         this.setDirectionCourante();
         int salle=0;
-        while (j.getPosition()!=null && j.getSalle().isVide()){
-            j.getPosition().getSuivante(directionCourante);
+        Position tmp = j.getPosition().getSuivante(directionCourante);
+        while (tmp!=null && tmp.getPlateau().getSalle(tmp).isVide()){
+            tmp=tmp.getSuivante(directionCourante);
             salle=salle+1;
         }
         int marge1=Math.abs(salle-(this.getMarge()/100)*salle);
@@ -55,3 +56,4 @@ public class ScannerUnidirectionnel extends Outil
 
         System.out.println("Le nombre de salles parcourues est compris entre "+marge1+" et "+marge2+".");
     }
+}
