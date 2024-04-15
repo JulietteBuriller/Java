@@ -82,6 +82,11 @@ public class Salle
     
     public void entree(Joueur j)
     {
+         if (j.getPosition().equals(this.getPosition())){
+            if (!this.isVide())
+            {
+                this.getContenu().interaction(j);               
+            }
         // activé quand le joueur se positionne sur la salle. Déclenche l'intéraction avec l'objet contenu dans la salle s'il y en a un
     }
     
