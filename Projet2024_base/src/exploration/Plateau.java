@@ -67,7 +67,10 @@ public class Plateau
     @Override
     public String toString()
     {
-        return "";// restitue la chaîne qui représente l'ensemble du plateau en combinant les toString des salles (voir exemple dans le sujet)
+        for(int i=0;i<this.getNbLig();i++) // Boucle pour d´ecrire les lignes
+            for(int j=0;j<this.getNbCol();j++) 
+                return this.getSalle(i,j).toString()+" ";// restitue la chaîne qui représente l'ensemble du plateau en combinant les toString des salles (voir exemple dans le sujet)
+            return " _\n";
     }
 
     public Plateau(int nbLig, int nbCol, Jeu jeu)
@@ -80,8 +83,9 @@ public class Plateau
             { setNouvelleSalle(new Position(i,j,this));
                 }
         setGrille(grille1);
-        Joueur j =new Joueur(new Position((grille.length/2),this));
-        j.setNom();
+        setJoueur(new Joueur(new Position((grille.length/2),this)));
+        Joueur j = this.getJoueur();
+        j.setNom(Lire.S("Quel est votre nom"));
         j.getSalle().setVisible(true);
         setVisible(true);
         // Crée un joueur et initialise le plateau selon les spécifications du jeu (Gros boulot)
