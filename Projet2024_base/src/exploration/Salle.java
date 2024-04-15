@@ -75,7 +75,7 @@ public class Salle
     }
     public String getSymbole()
     {
-        if (this.isVide()) return "";
+        if (this.isVide()) return " ";
         else return this.getContenu().toString();
         // renvoie des espaces ou le toString de l'objet contenu dans la salle
     }
@@ -88,8 +88,8 @@ public class Salle
                 this.getContenu().interaction(j);               
             }
         // activé quand le joueur se positionne sur la salle. Déclenche l'intéraction avec l'objet contenu dans la salle s'il y en a un
+        }
     }
-    
     @Override
     public  String toString()
     {
