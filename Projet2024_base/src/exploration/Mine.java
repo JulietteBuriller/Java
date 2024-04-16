@@ -17,4 +17,9 @@ public class Mine extends Objet
     }
 
     public Mine(){super("*","Mine");}
+    @Override
+    public int getNb(){
+        return 1;
+    }
+    
 }
