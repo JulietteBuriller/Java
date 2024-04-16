@@ -73,10 +73,15 @@ public class Salle
         }
         else System.out.print("erreur");
     }
-    public String getSymbole()
-    {
-        if (this.isVide()) return " ";
-        else return this.getContenu().toString();
+    public String getSymbole(){
+       if(this.getPlateau().getJoueur().getPosition().equals(this.getPosition()))
+            if (this.isVide()) return " j";
+                else 
+                    return this.getContenu().toString()+ " j";
+        else if (this.isVide()) return "   ";
+                else 
+                    return " "+this.getContenu().toString()+" ";
+        
         // renvoie des espaces ou le toString de l'objet contenu dans la salle
     }
     
@@ -94,7 +99,7 @@ public class Salle
     public  String toString()
     {
         if(this.isVisible()) return this.getSymbole();
-        else return "░░░"; // salle non visible
+        else return "░░░nv"; // salle non visible
     }
     
     /**
@@ -111,7 +116,9 @@ public class Salle
         
     public Salle(Position pos, Plateau p, Objet o)
     {
-        // initialisations
+        this.setPosition(pos);
+        this.setPlateau(p);
+        this.setObjet(o);// initialisations
         this.setVisible(false); // au départ, la salle n'est pas visible
     }
     public Salle(Position pos, Plateau p)
