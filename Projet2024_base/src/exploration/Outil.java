@@ -29,7 +29,10 @@ public abstract class Outil extends Objet
      * @return
      */
     public String getInfos(){return "("+this.getSymbole()+")"+this.getNature()+this.getDescriptif();}
-    
+    @Override
+    public int getNb(){
+        return 1;
+    }
     @Override
     public abstract void interaction(Joueur j);
     
