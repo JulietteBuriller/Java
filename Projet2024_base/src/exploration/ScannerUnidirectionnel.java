@@ -34,7 +34,7 @@ public class ScannerUnidirectionnel extends Outil
     {
         super
         (
-                "☞1",
+                "}V",
                 "Scanner unidirectionnel",
                 "Détecte à travers les murs la distance —\n" +
                 "en nombre de salles vides traversée — à laquelle se situe le premier objet — ou le mur du\n" +
