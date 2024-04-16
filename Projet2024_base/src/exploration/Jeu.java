@@ -39,12 +39,17 @@ public class Jeu
     
     public void joue()
     {
+        System.out.println (this.getPlateau().toString());
         // Déroulement du jeu
     }
     
     public Jeu(int nbLig, int nbCol, int proportionVides, Categorie... listeCategories)
     {
+        this.setListeCategories(listeCategories);
+        this.setProportionVides(proportionVides);
         Plateau p =new Plateau(nbLig,nbCol,this);
+        this.setPlateau(p);
+        
         this.joue();
         /*  initialisations du jeu : création d'un plateau et exécution de joue()
             nbLig et nbCol sont les tailles du plateau (Elles peuvent être fixes au moins au début)
