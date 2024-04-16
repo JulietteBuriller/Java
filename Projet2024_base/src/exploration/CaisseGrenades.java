@@ -13,10 +13,12 @@ public class CaisseGrenades extends Objet
     private final static int MAX = 9;// nombre maximal dans les caisses de grenades trouvées dans les salles
     private int nbgren;
 
-    public CaisseGrenades(int nbGrenades)
-    {
-        super(nbGrenades+"¤","grenade");
-        setNbgren(nbGrenades);
+    public CaisseGrenades(int nbGrenades){
+        
+        super("G","grenade");
+        this.setNbgren(nbGrenades);
+        
+        
         //suite code
     }
     
@@ -31,16 +33,19 @@ public class CaisseGrenades extends Objet
     public int getNbgren() {
         return nbgren;
     }
-
+    
     private void setNbgren(int nbgren) {
         this.nbgren = nbgren;
     }
-
+    @Override
+    public int getNb(){
+        return nbgren;
+    }
     @Override
     public void interaction(Joueur j)
     {
-        if (this.nbgren!=0){
-            int g=Lire.i("Rentrer un nombre de grenades : ");
+           if (this.nbgren!=0){
+            int g=Lire.i("Combien souhaitez vous prendre de grenades ? il y en a "+nbgren+" disponible.");
             if (this.nbgren>=g){
                 j.setNbgrenades(j.getNbgrenades()+g);
                 this.nbgren=this.nbgren-g;
@@ -58,4 +63,5 @@ public class CaisseGrenades extends Objet
            ce qui augmente les grenades du joueur et diminue d'autant cette réserve
         */
     }
+    
 }
