@@ -23,6 +23,7 @@ public abstract class Objet
 
     
     public abstract void interaction(Joueur j);
+    public abstract int getNb();
 
     @Override
     public int hashCode()
@@ -50,6 +51,6 @@ public abstract class Objet
     @Override
     public String toString()
     {
-        return this.getSymbole();
+        return this.getNb()+this.getSymbole();
     }
 }
