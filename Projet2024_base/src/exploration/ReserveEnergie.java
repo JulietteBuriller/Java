@@ -14,7 +14,7 @@ public class ReserveEnergie extends Objet
     private int uenergie;
 
     public ReserveEnergie(int disponible){
-        super(disponible+"$","Reserve Energie");
+        super("$","Reserve Energie");
         setUenergie(disponible);
     }
     
@@ -30,12 +30,15 @@ public class ReserveEnergie extends Objet
     private void setUenergie(int uenergie) {
         this.uenergie = uenergie;
     }
-    
+    @Override
+    public int getNb(){
+        return uenergie;
+    }
     @Override
     public void interaction(Joueur j)
     {
         if (this.uenergie!=0){
-            int e=Lire.i("Rentrer un nombre d'unités d'énergie : ");
+            int e=Lire.i("Combien souhaitez-vous prendre d'unites d'energie ?(Il en reste "+uenergie+".)");
             
             if (e<=this.uenergie){
                 j.setUEnergie(j.getUEnergie()+e);
@@ -43,7 +46,7 @@ public class ReserveEnergie extends Objet
             }
             else {
                 j.setUEnergie(j.getUEnergie()-this.uenergie);
-                System.out.println("Seulement "+this.uenergie+" unités d'énergie ont été ajoutées car il n'en restait plus assez dans la réserve.");  
+                System.out.println("Seulement "+this.uenergie+" unités d'energie ont ete ajoutées car il n'en restait plus assez dans la reserve.");  
                 this.uenergie=0;
                 }
         }
