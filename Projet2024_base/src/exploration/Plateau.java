@@ -4,6 +4,7 @@
  */
 package exploration;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 public class Plateau
 {
     private static final String BORD = "░";
-    public static boolean VISIBLE = true; // mode déboggage : si true, toutes les salles doivent afficher leur contenu
+    public static boolean VISIBLE = false; // mode déboggage : si true, toutes les salles doivent afficher leur contenu
     private Jeu jeu;
     public Jeu getJeu(){return this.jeu;}
     private void setJeu(Jeu jeu){this.jeu = jeu;}
@@ -41,9 +42,9 @@ public class Plateau
      * Place une salle à une position donnée (Les positions en Lig et Col commencent à 1)
      * @param s Une salle
      */
-    public void placeSalle(Salle s)
-    {
+    public void placeSalle(Salle s){
         Position p = s.getPosition();
+       
         if(!p.isValide()) throw new RuntimeException("Affectation de la salle à une position non valide");
         this.grille[p.getLig()-1][p.getCol()-1] = s;       
     }
@@ -53,7 +54,7 @@ public class Plateau
      * @param p la position dans le plateau
      * @param o l'objet que la salle doit contenir
      */
-    public void setNouvelleSalle(Position p, Objet o)
+    private void setNouvelleSalle(Position p, Objet o)
     {
         placeSalle(new Salle(p,this,o));       
     }
@@ -64,30 +65,48 @@ public class Plateau
     private void setJoueur(Joueur joueur){this.joueur = joueur;}
     public Position getPosJoueur(){return this.getJoueur().getPosition();}
 
-    @Override
+    /*@Override
     public String toString()
     {
-        for(int i=0;i<this.getNbLig();i++) // Boucle pour décrire les lignes
-            for(int j=0;j<this.getNbCol();j++) 
+        for(int i=1;i<this.getNbLig();i++) // Boucle pour décrire les lignes
+            for(int j=1;j<this.getNbCol();j++) 
                 return this.getSalle(i,j).toString()+" ";// restitue la chaîne qui représente l'ensemble du plateau en combinant les toString des salles (voir exemple dans le sujet)
             return " _\n";
     }
+    */
 
-    public Plateau(int nbLig, int nbCol, Jeu jeu)
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Salle[] grille1 : grille) {
+            for (int j = 0; j < grille1.length; j++) {
+                sb.append(grille1[j]);
+                if (j < grille1.length - 1) {
+                    sb.append(" "); // Ajoute un espace entre les éléments sur la même ligne
+                }
+            }
+            sb.append("\n"); // Ajoute un retour à la ligne à la fin de chaque ligne
+        }
+        return sb.toString();
+    }
+
+    public Plateau(int nbLig, int nbCol, Jeu jeu) 
     {
         setJeu(jeu);
         Salle[][] grille1;
         grille1 = new Salle [nbLig][nbCol];
-        for(int i=0;i<nbLig;i++) // Boucle pour décrire les lignes
-            for(int j=0;j<nbCol;j++) // Boucle pour décrire les colonnes
-            { setNouvelleSalle(new Position(i,j,this));
-                }
         setGrille(grille1);
-        setJoueur(new Joueur(new Position((grille.length/2),this)));
+        for(int i=1;i<=nbLig;i++) // Boucle pour décrire les lignes
+            for(int j=1;j<=nbCol;j++){ // Boucle pour décrire les colonnes  
+             int x=(int)(Math.random()*this.jeu.getListeCategories().length);
+             Objet o;
+            o = this.jeu.getListeCategories()[x].getNouveau();
+            this.setNouvelleSalle(new Position (i,j,this),o);
+            }
+        this.setJoueur(new Joueur(new Position(((nbLig*nbCol)/2),this)));
         Joueur j = this.getJoueur();
-        j.setNom();
         j.getSalle().setVisible(true);
-        setVisible(true);
+        this.setVisible(false);
         // Crée un joueur et initialise le plateau selon les spécifications du jeu (Gros boulot)
     }
 }
