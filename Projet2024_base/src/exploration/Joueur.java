@@ -90,13 +90,15 @@ public class Joueur
     
     public Joueur(String nom,Position position)
     {
-        setNom(nom);
-        setPosition(position);
+        this.setNom(nom);
+        this.setPosition(position);
+        this.setOutils(new LesOutils(this));
     }
     public Joueur(Position position)
     {
-        setNom();
-        setPosition(position);
+        this.setNom();
+        this.setOutils(new LesOutils(this));
+        this.setPosition(position);
     }
     
     
