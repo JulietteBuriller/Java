@@ -20,6 +20,7 @@ public class Joueur
      * Position du joueur
      * @return une référence à une position
      */
+    
     public int getNbgrenades(){
         return this.nbgrenades;
     }
@@ -51,12 +52,11 @@ public class Joueur
      * Salle où se situe le joueur
      * @return une référence à une salle
      */
+    
      public Salle getSalle(){
         return this.position.getPlateau().getSalle(this.position);
     }
      
-     
-  
     public void setNom(String nom){
         this.nom = nom;
     }
@@ -105,7 +105,7 @@ public class Joueur
    public void avance(Direction d)
     {
         if (this.getPosition().getSuivante(d).isValide() && this.getSalle().isPossible(d)){
-            this.position=this.getPosition().getSuivante(d);
+            this.setPosition (this.getPosition().getSuivante(d));
         }
         else System.out.println("vous ne pouvez pas avancer dans cette direction");
         /*
@@ -113,25 +113,27 @@ public class Joueur
         */
     }
 
-    public void recupere(Outil o)
+  public void recupere(Outil o)
     {
         this.outils.ajoute(o);
         //Cette méthode est déclenchée par l'interaction avec l'outil
     }    
     
-
-  
-    public void lanceGrenade(Direction d)
+  public void lanceGrenade(Direction d)
     {
-        if (this.getSalle().isPossible(d)==true){
-            System.out.println("Un mur est déjà ouvert dans cette direction. Vous avez perdu votre grenade");
+        if (this.getNbgrenades()!=0)
+        {
+            if (this.getSalle().isPossible(d)==true)
+            {
+                System.out.println("Un mur est déjà ouvert dans cette direction. Vous avez perdu votre grenade.");
+            }
+            else
+            {
+                this.getSalle().setAcces(d);
+                this.avance (d);
+                this.nbgrenades--;
+            }
         }
-        else{
-            this.getSalle().setAcces(d);
-            this.avance (d);
-            this.nbgrenades--;
-        }
-    }
-    
-    
+        else System.out.println("Vous n'avez plus de grenades");
+    }    
 }
