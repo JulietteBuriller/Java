@@ -26,6 +26,8 @@ public class ReserveEnergie extends Objet
     public int getUenergie(){
         return this.uenergie;
     }
+    public int getNb(){
+        return this.uenergie;
     private void setUenergie(int uenergie) {
         this.uenergie = uenergie;
     }
