@@ -43,7 +43,7 @@ public abstract class Outil extends Objet
             this.activation(j);
             j.setUEnergie(j.getUEnergie()- this.conso);
         }
-        else System.out.println("vous n'avez pas assez d'énergie pour utiliser cet outil.");
+        else System.out.println("vous n'avez pas assez d'energie pour utiliser cet outil.");
         
         /*
             Utilisation de l'outil. Il faut vérifier que le joueur a assez d'énergie (Sinon, faire un message d'erreur),
