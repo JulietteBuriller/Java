@@ -37,12 +37,47 @@ public class Jeu
     
     public void initJeu(){}
     
-    public void joue()
+   public void joue()
     {
+        while (!this.getJoueur().isPerdant()) /*(et tant qu'il n'a pas gagné)*/ 
+        {
+            System.out.println("Que vous voulez vous faire ?");
+            
+            System.out.println("1- Lancer une grenade");
+            System.out.println("2- Aller dans une salle accessible");
+            System.out.println("3- Utiliser un outil");
+            System.out.println("4- Abandonner");
+            int choix = Lire.i("Rentrer 1,2,3, ou 4 : ");
+            
+            switch (choix){
+                case 1:
+                        Direction d1 = new Direction();
+                        do
+                        {
+                            d1=new Direction(Lire.S("Entrez la direction dans laquelle vous souhaitez lancer votre grenade en combinant 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
+
+                        }while(!d1.isValide());
+                        this.getJoueur().lanceGrenade(d1);
+                    
+                case 2:
+                    Direction d2 = new Direction();
+                    do
+                    {
+                         d2=new Direction(Lire.S("Entrez la direction de la salle dans laquelle vous souhaitez aller 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
+
+                    }while(!d2.isValide());
+                    this.getJoueur().avance(d2);
+                    
+                case 3: 
+                    
+                case 4: 
+                    this.getJoueur().setPerdant(true);
+            }
+            
+        }
         System.out.println (this.getPlateau().toString());
         // Déroulement du jeu
     }
-    
     public Jeu(int nbLig, int nbCol, int proportionVides, Categorie... listeCategories)
     {
         this.setListeCategories(listeCategories);
