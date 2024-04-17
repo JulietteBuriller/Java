@@ -15,7 +15,7 @@ public class CaisseGrenades extends Objet
 
     public CaisseGrenades(int nbGrenades){
         
-        super("G","grenade");
+        super("¤","grenade");
         this.setNbgren(nbGrenades);
         
         
@@ -45,7 +45,7 @@ public class CaisseGrenades extends Objet
     public void interaction(Joueur j)
     {
            if (this.nbgren!=0){
-            int g=Lire.i("Combien souhaitez vous prendre de grenades ? il y en a "+nbgren+" disponible.");
+            int g=Lire.i("Combien souhaitez vous prendre de grenades ? il y en a "+nbgren+" disponibles. ");
             if (this.nbgren>=g){
                 j.setNbgrenades(j.getNbgrenades()+g);
                 this.nbgren=this.nbgren-g;
