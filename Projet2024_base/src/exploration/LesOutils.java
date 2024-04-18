@@ -24,7 +24,7 @@ public class LesOutils
     }
     public void ajoute(Outil o)
     {
-        if(this.liste.contains(o)) System.out.println(this.getProprietaire().NomtoString()+" est deja en possession de "+o);
+        if(this.isInList(o)) System.out.println(this.getProprietaire().NomtoString()+" est deja en possession de "+o);
         else this.liste.add(o);
     }
     private Joueur proprietaire;
@@ -36,6 +36,8 @@ public class LesOutils
         this.setProprietaire(proprietaire);
         this.init();
     }
+    public boolean isInList(outil o){
+        return this.liste.contains(o);
 
     @Override
     public String toString() {
