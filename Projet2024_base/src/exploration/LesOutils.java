@@ -4,6 +4,7 @@
  */
 package exploration;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Gère la liste des outils d'un joueur
@@ -15,7 +16,7 @@ public class LesOutils
     public int getTaille(){return liste.size();}
     public Outil get(int i){return liste.get(i);}
     public void setListe(ArrayList<Outil> liste){this.liste = liste;}
-    public void init()
+    private void init()
     {
         liste = new ArrayList<Outil>(); // Crée une liste d'outils vide
         liste.add(new ScannerUnidirectionnel()); // outil ajouté dès le départ
@@ -23,7 +24,7 @@ public class LesOutils
     }
     public void ajoute(Outil o)
     {
-        if(this.liste.contains(o)) System.out.println(this.getProprietaire()+" est déjà en possession de "+o);
+        if(this.liste.contains(o)) System.out.println(this.getProprietaire().NomtoString()+" est deja en possession de "+o);
         else this.liste.add(o);
     }
     private Joueur proprietaire;
@@ -33,6 +34,13 @@ public class LesOutils
     public LesOutils(Joueur proprietaire)
     {
         this.setProprietaire(proprietaire);
-        init();
+        this.init();
     }
+
+    @Override
+    public String toString() {
+        return "" + liste.toString() ;
+    }
+
+    
 }
