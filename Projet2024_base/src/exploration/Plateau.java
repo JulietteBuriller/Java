@@ -22,6 +22,28 @@ public class Plateau
     public boolean isVisible(){return this.visible||Plateau.VISIBLE;}
     public void setVisible(boolean visible){this.visible = visible;}
 
+     private Salle sortie;
+    
+    public void setSortie (){
+        int nb=(int)(1+4*Math.random());
+        switch (nb){
+            case 1 : 
+                this.sortie.setPosition(new Position(1,1,this));
+            case 2 : 
+                this.sortie.setPosition(new Position (1,this.getNbCol(),this));
+            case 3 : 
+                this.sortie.setPosition (new Position (this.getNbLig(),1,this));
+            case 4 : 
+                this.sortie.setPosition(new Position (this.getNbLig(),this.getNbCol(),this));
+                
+        //On prend un nombre au hasard entre 1 et 4, et la sortie est choisie en fonction du nombre obtenu (la sortie est forcément un des 4 coins) 
+        //J'ai mis setPosition(Position position) en protected pour que ça marche
+        }
+    }
+    public Salle getSortie(){
+        return this.sortie;
+    }
+
     private Salle[][] grille;
 
     private void setGrille(Salle[][] grille) {
