@@ -24,7 +24,7 @@ public class LesOutils
     }
     public void ajoute(Outil o)
     {
-        if(this.liste.contains(o)) System.out.println(this.getProprietaire().NomtoString()+" est deja en possession de "+o);
+        if(this.isInList(o)) System.out.println(this.getProprietaire().NomtoString()+" est deja en possession de "+o);
         else {this.liste.add(o); o.nb=0;}
     }
     public void enlève(Outil o)
@@ -35,7 +35,11 @@ public class LesOutils
     private Joueur proprietaire;
     public Joueur getProprietaire(){return this.proprietaire;}
     private void setProprietaire(Joueur proprietaire){this.proprietaire = proprietaire;}
+
     
+    public boolean isInList(Outil o){
+        return this.liste.contains(o);
+     }
     public LesOutils(Joueur proprietaire)
     {
         this.setProprietaire(proprietaire);
