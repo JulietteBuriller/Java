@@ -21,7 +21,7 @@ public abstract class Outil extends Objet
 
     public boolean isUtilisablePar(Joueur j)
     { 
-        return j.getUEnergie()>=this.conso;
+        return j.getUEnergie()>=this.conso && j.possede(this);
     }
     
     /**
