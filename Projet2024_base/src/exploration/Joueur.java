@@ -14,8 +14,8 @@ public class Joueur
     private LesOutils outils;
     private boolean perdant;
     private Position position;
-    private int nbgrenades=10;
-    private int uEnergie =20;
+    private int nbgrenades=5;
+    private int uEnergie =5;
     /**
      * Position du joueur
      * @return une référence à une position
@@ -121,8 +121,7 @@ public class Joueur
     
   public void lanceGrenade(Direction d)
     {
-        if (this.getNbgrenades()!=0)
-        {
+        if (this.getNbgrenades()>0) {
             if (this.getSalle().isPossible(d)==true)
             {
                 System.out.println("Un mur est déjà ouvert dans cette direction. Vous avez perdu votre grenade.");
@@ -133,7 +132,18 @@ public class Joueur
                 this.avance (d);
                 this.nbgrenades--;
             }
-        }
-        else System.out.println("Vous n'avez plus de grenades");
+        } else System.out.println("Vous n'avez plus de grenades");
     }    
+
+  
+    public String NomtoString() {
+        return " " + nom ;
+    }
+
+    @Override
+    public String toString() {
+        return  "outils :" + outils.toString() + "\n nombre de grenades :" + nbgrenades + "\n nombre d'Energie :" + uEnergie ;
+    }
+    
+  
 }
