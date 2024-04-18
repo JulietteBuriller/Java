@@ -45,6 +45,9 @@ public class Joueur
     public boolean isPerdant(){
         return this.perdant;
     }
+     public boolean isGagnant(){
+        return this.getPosition().equals(this.getPosition().getPlateau().getSortie().getPosition());
+    }
      public Position getPosition(){
          return this.position;
      }    
