@@ -80,7 +80,9 @@ public class Jeu
                     this.getJoueur().avance(d2);
                     break;
                 case 4: 
-                    
+                    System.out.println("Quel outil souhaitez-vous utiliser ? vous possédez "+this.getJoueur().getOutils().toString());
+                    int x = Lire.i("Rentrer un entier, le numéro de la place ou se situe l'objet dans la liste ");
+                    this.getJoueur().getOutils().get(x-1).utilise(this.getJoueur());
                     break;
                 case 5: 
                     this.getJoueur().setPerdant(true);
