@@ -86,8 +86,9 @@ public class Salle
     }
     
     public void entree(Joueur j)
-    {
+    {   
          if (j.getPosition().equals(this.getPosition())){
+            this.setVisible(true);
             if (!this.isVide())
             {
                 this.getContenu().interaction(j);               
@@ -116,6 +117,7 @@ public class Salle
         
     public Salle(Position pos, Plateau p, Objet o)
     {
+        this.initAcces();
         this.setPosition(pos);
         this.setPlateau(p);
         this.setObjet(o);// initialisations
