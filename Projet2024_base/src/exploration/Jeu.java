@@ -39,18 +39,25 @@ public class Jeu
     
    public void joue()
     {
+        
         while (!this.getJoueur().isPerdant()) /*(et tant qu'il n'a pas gagné)*/ 
         {
+            System.out.println (this.getPlateau().toString());
             System.out.println("Que vous voulez vous faire ?");
             
-            System.out.println("1- Lancer une grenade");
-            System.out.println("2- Aller dans une salle accessible");
-            System.out.println("3- Utiliser un outil");
-            System.out.println("4- Abandonner");
-            int choix = Lire.i("Rentrer 1,2,3, ou 4 : ");
+            System.out.println("1- Consulter votre materiel");
+            System.out.println("2- Lancer une grenade");
+            System.out.println("3- Aller dans une salle accessible");
+            System.out.println("4- Utiliser un outil");
+            System.out.println("5- Abandonner");
+            int choix = Lire.i("Rentrer 1,2,3,4,ou 5");
             
             switch (choix){
                 case 1:
+                        System.out.println("Vous avez :\n"+this.getJoueur().toString());
+                        break;
+                case 2:
+                    
                         Direction d1 = new Direction();
                         do
                         {
@@ -58,8 +65,9 @@ public class Jeu
 
                         }while(!d1.isValide());
                         this.getJoueur().lanceGrenade(d1);
-                    
-                case 2:
+                        
+                    break;
+                case 3:
                     Direction d2 = new Direction();
                     do
                     {
@@ -67,15 +75,18 @@ public class Jeu
 
                     }while(!d2.isValide());
                     this.getJoueur().avance(d2);
-                    
-                case 3: 
-                    
+                    break;
                 case 4: 
+                    
+                    break;
+                case 5: 
                     this.getJoueur().setPerdant(true);
+                    System.out.println("Vous avez perdu...");
+                    break;
             }
             
         }
-        System.out.println (this.getPlateau().toString());
+        
         // Déroulement du jeu
     }
     public Jeu(int nbLig, int nbCol, int proportionVides, Categorie... listeCategories)
