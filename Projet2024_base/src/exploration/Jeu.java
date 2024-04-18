@@ -27,8 +27,11 @@ public class Jeu
     public int getProportionVides(){return this.proportionVides;}
     private void setProportionVides(int proportionVides){this.proportionVides = proportionVides;}
     
-    public boolean isFini(){return true;}
-
+    public boolean isFini()
+    {
+        //return this.getJoueur().isPerdant()||();
+        return (this.getJoueur().isGagnant()||this.getJoueur().isPerdant());
+    }
     /**
      * Restitue le joueur qui a été créé dans le plateau (Le joueur pourrait aussi être référencé dans une instance de jeu)
      * @return
@@ -40,7 +43,7 @@ public class Jeu
    public void joue()
     {
         
-        while (!this.getJoueur().isPerdant()) /*(et tant qu'il n'a pas gagné)*/ 
+        while (!isFini())
         {
             System.out.println (this.getPlateau().toString());
             System.out.println("Que vous voulez vous faire ?");
