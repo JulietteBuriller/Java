@@ -28,11 +28,11 @@ public class Plateau
         int nb=(int)(1+4*Math.random());
         switch (nb){
             case 1 : 
-                this.sortie.setPosition(new Position(1,1,this));
+                this.sortie.setPosition(new Position(1,1,this));break;
             case 2 : 
-                this.sortie.setPosition(new Position (1,this.getNbCol(),this));
+                this.sortie.setPosition(new Position (1,this.getNbCol(),this));break;
             case 3 : 
-                this.sortie.setPosition (new Position (this.getNbLig(),1,this));
+                this.sortie.setPosition (new Position (this.getNbLig(),1,this));break;
             case 4 : 
                 this.sortie.setPosition(new Position (this.getNbLig(),this.getNbCol(),this));
                 
