@@ -45,12 +45,14 @@ public class Joueur
     public boolean isPerdant(){
         return this.perdant;
     }
-     public boolean isGagnant(){
+    public boolean isGagnant(){
         return this.getPosition().equals(this.getPosition().getPlateau().getSortie().getPosition());
     }
-     public Position getPosition(){
+    public Position getPosition(){
          return this.position;
      }    
+    public boolean possede(Outil o){
+        return this.getOutils().isInList(o);
     /**
      * Salle où se situe le joueur
      * @return une référence à une salle
