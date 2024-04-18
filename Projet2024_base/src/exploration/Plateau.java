@@ -128,6 +128,7 @@ public class Plateau
         this.setJoueur(new Joueur(new Position(((nbLig*nbCol)/2),this)));
         Joueur j = this.getJoueur();
         j.getSalle().setVisible(true);
+        this.setSortie();
         this.setVisible(false);
         // Crée un joueur et initialise le plateau selon les spécifications du jeu (Gros boulot)
     }
