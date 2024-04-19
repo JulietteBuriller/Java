@@ -37,9 +37,9 @@ public class LesOutils
     private void setProprietaire(Joueur proprietaire){this.proprietaire = proprietaire;}
 
     
-    public boolean isInList(Outil o){
+    /*public boolean isInList(Outil o){
         return this.liste.contains(o);
-     }
+     }*/
     public LesOutils(Joueur proprietaire)
     {
         this.setProprietaire(proprietaire);
