@@ -58,6 +58,6 @@ public class ScannerUnidirectionnel extends Outil
         int marge1=Math.abs(salle-(this.getMarge()/100)*salle);
         int marge2=Math.abs(salle+(this.getMarge()/100)*salle);
         j.getOutils().enlève(this);
-        System.out.println("Le nombre de salles parcourues est compris entre "+marge1+" et "+marge2+".");
+        System.out.println("Le nombre de salles vides autour de vous est compris entre "+marge1+" et "+marge2+".");
     }
 }
