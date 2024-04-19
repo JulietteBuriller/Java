@@ -24,7 +24,7 @@ public class LesOutils
     }
     public void ajoute(Outil o)
     {
-        if(this.isInList(o)) System.out.println(this.getProprietaire().NomtoString()+" est deja en possession de "+o);
+        if(this.liste.contains(o)) System.out.println(this.getProprietaire().NomtoString()+" est deja en possession de "+o);
         else {this.liste.add(o); o.nb=0;}
     }
     public void enlève(Outil o)
