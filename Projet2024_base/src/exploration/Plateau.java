@@ -36,9 +36,6 @@ public class Plateau
                 this.sortie= new Salle(new Position (this.getNbLig(),1,this),this);this.placeSalle(sortie);break;
             case 4 : 
                 this.sortie= new Salle(new Position (this.getNbLig(),this.getNbCol(),this),this);this.placeSalle(sortie);break;
-                
-        //On prend un nombre au hasard entre 1 et 4, et la sortie est choisie en fonction du nombre obtenu (la sortie est forcément un des 4 coins) 
-        //J'ai mis setPosition(Position position) en protected pour que ça marche
         }
     }
     public Salle getSortie(){
