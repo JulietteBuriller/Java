@@ -51,8 +51,8 @@ public class Joueur
     public Position getPosition(){
          return this.position;
      }    
-    public boolean possede(Outil o){
-        return this.getOutils().isInList(o);
+   /* public boolean possede(Outil o){
+        return this.getOutils().isInList(o);*/
     /**
      * Salle où se situe le joueur
      * @return une référence à une salle
