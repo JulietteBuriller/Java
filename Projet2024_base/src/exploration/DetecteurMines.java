@@ -13,7 +13,8 @@ public class DetecteurMines extends Outil
 {
     @Override
     public void interaction(Joueur j){
-     j.recupere(this);
+         System.out.println("Cette salle contient un detecteur de mines");
+         j.recupere(this);
     }
     public DetecteurMines()
     {
