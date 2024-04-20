@@ -14,17 +14,24 @@ public abstract class Objet
 {
     private String symbole;
     private String nature;
+    public int nb=1;
 
     public String getSymbole(){return this.symbole;}
     public String getNature(){return this.nature;}
+    public int getnb(){return this.nb;}
     
     private void setNature(String nature){this.nature = nature;}
     private void setSymbole(String symbole){this.symbole = symbole;}
+    private void setNb(int nb){this.nb=nb;}
 
     
     public abstract void interaction(Joueur j);
     public abstract int getNb();
-
+    
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode()
     {
@@ -32,20 +39,21 @@ public abstract class Objet
         hash = 53 * hash + Objects.hashCode(this.symbole);
         return hash;
     }
+
+    
     public Objet(String symbole, String nature)
     {
         this.setSymbole(symbole);
         this.setNature(nature);
     }
 
-    @Override
-    public boolean equals(Object autre)
+    public boolean equals(Objet autre)
     {
         if (this == autre) return true;
         if (autre == null) return false;
         if (getClass() != autre.getClass())return false;
-        final Outil autreObjet = (Outil) autre;
-        return Objects.equals(this.getSymbole(), autreObjet.getSymbole());
+        //final Outil autreObjet = (Outil) autre;
+        return Objects.equals(this.getSymbole(), autre.getSymbole());
     }
     
     @Override
