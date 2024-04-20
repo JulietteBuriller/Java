@@ -29,6 +29,7 @@ public class Jeu
     
     public boolean isFini()
     {
+       
         return (this.getJoueur().isGagnant()||this.getJoueur().isPerdant());
     }
     /**
@@ -37,7 +38,10 @@ public class Jeu
      */
     public Joueur getJoueur(){return this.getPlateau().getJoueur();}
     
-    public void initJeu(){}
+    public void initJeu(){
+        this.setPlateau(this.getPlateau());
+        this.joue();
+    }
     
    public void joue()
     {
@@ -52,7 +56,7 @@ public class Jeu
             System.out.println("3- Aller dans une salle accessible");
             System.out.println("4- Utiliser un outil");
             System.out.println("5- Abandonner");
-            int choix = Lire.i("Rentrer 1, 2, 3, 4, ou 5");
+            int choix = Lire.i("Rentrer 1,2,3,4,ou 5");
             
             switch (choix){
                 case 1:
@@ -67,20 +71,26 @@ public class Jeu
 
                         }while(!d1.isValide());
                         this.getJoueur().lanceGrenade(d1);
+                        
                     break;
                 case 3:
                     Direction d2 = new Direction();
                     do
                     {
-                         d2=new Direction(Lire.S("Entrez la direction de la salle dans laquelle vous souhaitez aller 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
+                         d2=new Direction(Lire.S("Entrez la direction de la salle dans laquelle vous souhaitez aller \n 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
 
                     }while(!d2.isValide());
                     this.getJoueur().avance(d2);
                     break;
                 case 4: 
-                    System.out.println("Quel outil souhaitez-vous utiliser ? vous possédez "+this.getJoueur().getOutils().toString());
-                    int x = Lire.i("Rentrer un entier, le numéro de la place ou se situe l'objet dans la liste ");
-                    this.getJoueur().getOutils().get(x-1).utilise(this.getJoueur());
+                    System.out.println("Quel outil souhaitez-vous utiliser ? vous possedez "+this.getJoueur().getOutils().toString());
+                    int x=0;
+                    do{
+                    x = Lire.i("Rentrer le numero de la place ou se situe l'objet dans la liste (entier) ");
+                    x=x-1;
+                    }
+                    while(x<0 || x>=this.getJoueur().getOutils().getTaille());
+                    this.getJoueur().getOutils().get(x).utilise(this.getJoueur());
                     break;
                 case 5: 
                     this.getJoueur().setPerdant(true);
@@ -98,7 +108,6 @@ public class Jeu
         this.setProportionVides(proportionVides);
         Plateau p =new Plateau(nbLig,nbCol,this);
         this.setPlateau(p);
-        
         this.joue();
         /*  initialisations du jeu : création d'un plateau et exécution de joue()
             nbLig et nbCol sont les tailles du plateau (Elles peuvent être fixes au moins au début)
