@@ -15,7 +15,7 @@ public class CaisseGrenades extends Objet
 
     public CaisseGrenades(int nbGrenades){
         
-        super("¤","grenade");
+        super("@ ","grenade");
         this.setNbgren(nbGrenades);
         
         
@@ -52,11 +52,11 @@ public class CaisseGrenades extends Objet
             }
             else {
                 j.setNbgrenades(j.getNbgrenades()+this.nbgren);
-                System.out.println("Seulement "+this.nbgren+" grenades ont été ajoutées car il n'en restait plus assez dans la réserve.");  
+                System.out.println("Seulement "+this.nbgren+" grenades ont ete ajoutees car il n'en restait plus assez dans la reserve.");  
                 this.nbgren=0;
             }
         }
-        else System.out.println("Il ne reste plus de grenades dans cette réserve.");
+        else System.out.println("Il ne reste plus de grenades dans cette reserve.");
         
         /* S'il reste des grenades dans cette réserve,
            propose au joueur d'en prendre un certain nombre,
