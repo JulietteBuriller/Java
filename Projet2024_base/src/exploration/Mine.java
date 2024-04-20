@@ -10,18 +10,21 @@ package exploration;
  */
 public class Mine extends Objet
 {
+    
     @Override
     public void interaction(Joueur j)
     {
         System.out.println("Vous avez perdu...(boom!)");
         j.setPerdant(true);
+        this.nb=0;
         
     }
 
-    public Mine(){super("*","Mine");}
+    public Mine(){super("* ","Mine");}
+    
     @Override
     public int getNb(){
-        return 1;
+        return this.getnb();
     }
     
 }
