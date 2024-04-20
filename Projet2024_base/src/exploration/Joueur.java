@@ -110,6 +110,7 @@ public class Joueur
    public void avance(Direction d)
     {
         if (this.getPosition().getSuivante(d).isValide() && this.getSalle().isPossible(d)){
+            System.out.println("Vous avez avance");
             this.setPosition (this.getPosition().getSuivante(d));
         }
         else System.out.println("vous ne pouvez pas avancer dans cette direction");
