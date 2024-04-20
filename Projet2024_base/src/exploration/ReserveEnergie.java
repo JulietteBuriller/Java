@@ -14,7 +14,7 @@ public class ReserveEnergie extends Objet
     private int uenergie;
 
     public ReserveEnergie(int disponible){
-        super("$","Reserve Energie");
+        super("$ ","Reserve Energie");
         setUenergie(disponible);
     }
     
@@ -26,8 +26,10 @@ public class ReserveEnergie extends Objet
     public int getUenergie(){
         return this.uenergie;
     }
+    @Override
     public int getNb(){
         return this.uenergie;
+    }
     private void setUenergie(int uenergie) {
         this.uenergie = uenergie;
     }
@@ -55,3 +57,5 @@ public class ReserveEnergie extends Objet
            ce qui augmente l'énergie du joueur et diminue d'autant cette réserve
         */
     }
+   
+
