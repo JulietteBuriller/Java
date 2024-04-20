@@ -13,9 +13,10 @@ public class Joueur
     private String nom;
     private LesOutils outils;
     private boolean perdant;
+    private boolean gagnant=false;
     private Position position;
-    private int nbgrenades=5;
-    private int uEnergie =5;
+    private int nbgrenades=15;
+    private int uEnergie =15;
     /**
      * Position du joueur
      * @return une référence à une position
@@ -46,18 +47,18 @@ public class Joueur
         return this.perdant;
     }
     public boolean isGagnant(){
-        return this.getPosition().equals(this.getPosition().getPlateau().getSortie().getPosition());
+        return this.gagnant;
     }
     public Position getPosition(){
          return this.position;
      }    
-   /* public boolean possede(Outil o){
-        return this.getOutils().isInList(o);*/
+    public boolean possede(Outil o){
+        return this.getOutils().isInList(o);
     /**
      * Salle où se situe le joueur
      * @return une référence à une salle
      */
-    
+    }
      public Salle getSalle(){
         return this.position.getPlateau().getSalle(this.position);
     }
@@ -80,8 +81,12 @@ public class Joueur
     public void setPerdant(boolean perdant){
         this.perdant = perdant;
     }
+    protected void setGagnant(boolean gagnant){
+        this.gagnant = gagnant;
+    }
     private void setPosition(Position position)
     {
+        
         this.position = position ;
         this.getSalle().entree(this);
         // affectation de la position en déclenchant la méthode d'entrée de la salle
