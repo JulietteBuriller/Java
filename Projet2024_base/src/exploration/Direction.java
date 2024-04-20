@@ -5,12 +5,11 @@
 package exploration;
 
 /**
- * Classe complète… à laquelle il est néanmoins possible d'ajouter des fonctionnalités
+ *
  * @author jo
  */
 public class Direction
 {
-    // Directions prédéfinies
     public static final Direction DROITE = new Direction("droite");
     public static final Direction GAUCHE = new Direction("gauche");    
     public static final Direction HAUT = new Direction("haut");
@@ -21,35 +20,38 @@ public class Direction
     public static final Direction BAS_DROITE = new Direction("bas droite");
     private static final Direction[] DIRECTIONS = {DROITE,HAUT_DROITE,HAUT,HAUT_GAUCHE,GAUCHE,BAS_GAUCHE,BAS,BAS_DROITE};
 
-    /**
-     * Restitue la direction prédéfinie correspondant au rang spécifié
-     * @param rang Un entier quelconque (Toutes les valeurs sont légales)
-     * @return Une des positions prédédinies
-     */
-    public static Direction getDirection(int rang){return Direction.DIRECTIONS[new Direction(rang).getRang()];}
+    public static Direction getDirectionQuelconque()
+    {
+        Direction d;
+        do
+        {
+            d = new Direction(Lire.S("Entrez une direction en combinant 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
+        }while(!d.isValide());
+        return d;
+    }
 
-    /**
-     * Restitue la direction correspondant aux décalages de ligne et de colonne spécifiés
-     * @param dLig décalage de ligne (En principe dans l'intervalle [-1,1] mais peut être erroné)
-     * @param dCol décalage de colonne (En principe dans l'intervalle [-1,1] mais peut être erroné)
-     * @return Une direction qui est une des prédéfinies si elle est valide ou une nouvelle direction dans le cas contraire
-     */
-    public static Direction getDirection(int dLig,int dCol)
-    {   
-        Direction nouvelle = new Direction(dLig,dCol);
-        if(nouvelle.isValide()) return Direction.DIRECTIONS[nouvelle.getRang()];
-        else return nouvelle;
+    public static Direction getDirectionHorizontaleVerticale()
+    {
+        Direction d;
+        do
+        {
+            d = new Direction(Lire.S("Entrez une direction 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
+        }while(!d.isHorizontaleVerticale());
+        return d;
     }
 
     /**
-     * Restitue une direction à partir d'un texte chaîne qui peut combiner
-     * l'indication d'une direction verticale (haut ou h, bas ou b) et
-     * horizontale (droite ou d, gauche ou g).
-     * La casse n'importe pas et les caractères "-"," " et "_" sont ignorés.
-     * La direction obtenue est invalide (0,0) si le texte spécifié est incorrect
-     * @param dirTexte
+     * Restitue la d prÃ©dÃ©finie correspondant au rang spÃ©cifiÃ©
+     * @param rang
      * @return
      */
+    public static Direction getDirection(int rang){return Direction.DIRECTIONS[new Direction(rang).getRang()];}
+    public static Direction getDirection(int lig,int col)
+    {   
+        Direction nouvelle = new Direction(lig,col);
+        if(nouvelle.isValide()) return Direction.DIRECTIONS[nouvelle.getRang()];
+        else return nouvelle;
+    }
     public static Direction getDirection(String dirTexte)
     {
         Direction nouvelle = new Direction(dirTexte);
@@ -68,17 +70,26 @@ public class Direction
         return res;
     }
 
-    private int dLig;// direction sur l'axe vertical
     /**
-     * restitue le décalage en ligne (vertical) entre -1 (bas) et 1 (haut) s'il n'est pas erroné
-     * @return un entier entre -1 et 1 — sauf si le décalage est invalide (Dans ce cas, les valeurs peuvent être différentes)
+     * VÃ©rifie que la position courante est limitÃ©e Ã  haut, bas, gauche ou droite
+     * @return
+     */
+    public boolean isHorizontaleVerticale()
+    {
+        return this.isValide()&&(this.getRang()%2==0);
+    }
+
+    private int dLig;// d sur l'axe vertical entre -1 et 1
+    /**
+     * restitue le dÃ©calage en ligne (vertical) entre -1 (bas) et 1 (haut) 
+     * @return un entier entre -1 et 1 â€” sauf si le dÃ©calage est invalide (Dans ce cas, les valeurs peuvent Ãªtre diffÃ©rentes)
      */
     public int getdLig(){return this.dLig;}
     private void setdLig(int dLig){this.dLig = dLig;}
 
-    private int dCol;// direction sur l'axe horizontal
+    private int dCol;// d sur l'axe horizontal entre -1 et 1
     /**
-     * restitue le décalage en colonne (horizontal) entre -1 (bas) et 1 (haut) s'il n'est pas erroné
+     * restitue le dÃ©calage en colonne (horizontal) entre -1 (bas) et 1 (haut)
      * @return
      */
     public int getdCol(){return this.dCol;}
@@ -86,7 +97,7 @@ public class Direction
 
 
     /**
-     * Restitue le rang du décalage dans le sens trigonométrique (droite -> 0, haut droite -> 1, haut -> 2…)
+     * Restitue le rang du dÃ©calage dans le sens trigonomÃ©trique (droite -> 0, haut droite -> 1, haut -> 2â€¦)
      * @return un entier entre 0 et 7
      */
     public int getRang()
@@ -94,18 +105,18 @@ public class Direction
         if(!isValide())throw new RuntimeException("Direction invalide");
         double dCol = this.dCol,dLig= this.dLig;
         if(Math.abs(dCol*dLig)==1) dCol = dCol*Math.cos(Math.PI/4);
-        // dans les angles, on se ramène à un multiple de PI/4
+        // dans les angles, on se ramÃ¨ne Ã  un multiple de PI/4
         int rang = (int)Math.round(Math.acos(dCol)/Math.PI*4);
         /*
-         * On obtient un nombre entre 0 et 4. Il n'y a pas de distinction entre les directions suivant leur décalage vertical (négatif ou positif)
+         * On obtient un nombre entre 0 et 4. Il n'y a pas de distinction entre les directions suivant leur dÃ©calage vertical (nÃ©gatif ou positif)
          */
-        if(dLig<0) rang = 7-rang+1; // pour générer les pas correspondant à un décalage vertical négatif
+        if(dLig>0) rang = 7-rang+1; // pour gÃ©nÃ©rer les pas correspondant Ã  un dÃ©calage vertical nÃ©gatif
         return rang;
     }
     
     /**
-     * Restitue la direction suivante dans le sens trigonométrique
-     * @return une direction
+     * Restitue la d suivante dans le sens trigonomÃ©trique
+     * @return une d
      */
     public Direction getSucc()
     {
@@ -114,8 +125,8 @@ public class Direction
     }
 
     /**
-     * Restitue la direction précédente en (sens trigonométrique inverse)
-     * @return une direction
+     * Restitue la d prÃ©cÃ©dente en (sens trigonomÃ©trique inverse)
+     * @return une d
      */
     public Direction getPred()
     {
@@ -130,15 +141,15 @@ public class Direction
         simplification = simplification.replace("bas", "b");
         simplification = simplification.replace("gauche", "g");
         simplification = simplification.replace("droite", "d");
-        simplification = simplification.replaceAll("-", "");
+        simplification = simplification.replace("-", "");
         simplification = simplification.replaceAll(" ", "");
         simplification = simplification.replaceAll("_", "");
         return simplification;
     }
     /**
-     * Restitue l'adresse d'une nouvelle direction ayant dLig et dCol comme décalages respectifs en ligne et en colonne
-     * @param dCol entier en principe dans l'intervalle [-1,1] qui représente le décalage en ligne
-     * @param dLig entier en principe dans l'intervalle [-1,1] qui représente le décalage en colonne
+     * Restitue l'adresse d'une nouvelle d ayant dLig et dCol comme dÃ©calages respectifs en ligne et en colonne
+     * @param dCol entier dans l'intervalle [-1,1] qui reprÃ©sente le dÃ©calage en ligne
+     * @param dLig entier dans l'intervalle [-1,1] qui reprÃ©sente le dÃ©calage en colonne
      */
     public Direction(int dLig, int dCol)
     {
@@ -146,7 +157,7 @@ public class Direction
         this.setdCol(dCol);
     }
    /**
-     * Direction par défaut à droite
+     * Direction par dÃ©faut Ã  droite
      */
     public Direction()
     {
@@ -154,8 +165,8 @@ public class Direction
     }
 
     /**
-     * Construit la direction correspondant à la chaine en paramètre. Restitue la direction 0,0 (invalide) si le texte ne correspond pas à une direction
-     * @param dirTexte chaîne qui peut combiner l'indication d'une direction verticale (haut ou h, bas ou b) et horizontale (droite ou d, gauche ou g). La casse n'importe pas.
+     * Restitue la d correspondant Ã  la chaine en paramÃ¨tre
+     * @param dirTexte chaÃ®ne qui peut combiner l'indication d'une d verticale (haut ou h, bas ou b) et horizontale (droite ou d, gauche ou g). La casse n'importe pas.
      */
     public Direction(String dirTexte)
     {
@@ -173,39 +184,41 @@ public class Direction
     }
 
     /**
-     * Restitue une direction correspondant à un angle repéré par rang. angle = rangxPI/4 : 0,±8,±16,…->droite, 1,9,17,… -7,-15,…->haut droite…, 2,10,18,… -> haut…
-     * @param rang entier positif ou négatif
+     * Restitue une direction correspondant Ã  un angle repÃ©rÃ© par rang. angle = rangxPI/4 : 0,Â±8,Â±16,â€¦->droite, 1,9,17,â€¦ -7,-15,â€¦->haut droiteâ€¦, 2,10,18,â€¦ -> hautâ€¦
+     * @param rang entier positif ou nÃ©gatif
      */
     public Direction(int rang)
     {
-        this((int)Math.round(Math.sin(rang*Math.PI/4)),(int)Math.round(Math.cos(rang*Math.PI/4)));
+        this(-(int)Math.round(Math.sin(rang*Math.PI/4)),(int)Math.round(Math.cos(rang*Math.PI/4)));
     }
 
     private void setDxDy(char dir)
     {
         switch (dir)
         {
-            case 'h' : this.dLig += 1;break;
-            case 'b' : this.dLig -= 1;break;
+            case 'h' : this.dLig -= 1;break;
+            case 'b' : this.dLig += 1;break;
             case 'd' : this.dCol += 1;break;
             case 'g' : this.dCol -= 1;
         }
     }
 
     /**
-     * Restitue la combinaison de deux directions… qui peut être invalide
+     *
      * @param autre
-     * @return une nouvelle direction
+     * @return
      */
     public Direction getCombinaison(Direction autre)
     {
         if(autre == null || !this.isValide() || !autre.isValide()) return null;
-        return Direction.getDirection(this.getdLig()+autre.getdLig(),this.getdCol()+autre.getdCol());
+        Direction rep = Direction.getDirection(this.getdLig()+autre.getdLig(),this.getdCol()+autre.getdCol());
+        if(rep.isValide())return rep;
+        return null;
     }
     
     /**
-     * Restitue la direction inverse de la direction courante (son rang est augmenté/diminué de 4)
-     * @return Une nouvelle direction inverse de la première
+     * Restitue la direction inverse de la direction courante
+     * @return
      */
     public Direction getInverse()
     {
@@ -234,7 +247,7 @@ public class Direction
         if (autre == null)return false;
         if (getClass() != autre.getClass()) return false;
         Direction o = (Direction) autre;
-        if(!this.isValide()||!o.isValide()) return false;
-        return this.getRang()==o.getRang();
-    }    
+        return this.getdLig()==o.getdLig() && this.getdCol()==o.getdCol();
+    }
+    
 }
