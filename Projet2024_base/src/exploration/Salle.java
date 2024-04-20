@@ -33,7 +33,7 @@ public class Salle
     }
     
     public Position getPosition(){return this.position;}
-    private void setPosition(Position position){this.position = position;}
+    void setPosition(Position position){this.position = position;}
     
     public Plateau getPlateau()
     {
@@ -75,12 +75,12 @@ public class Salle
     }
     public String getSymbole(){
        if(this.getPlateau().getJoueur().getPosition().equals(this.getPosition()))
-            if (this.isVide()) return " j";
+            if (this.isVide()) return "|  j|";
                 else 
-                    return this.getContenu().toString()+ " j";
-        else if (this.isVide()) return "   ";
+                    return "|"+this.getContenu().toString()+ " j|";
+        else if (this.isVide()) return "|   |";
                 else 
-                    return " "+this.getContenu().toString()+" ";
+                    return "|"+this.getContenu().toString()+"|";
         
         // renvoie des espaces ou le toString de l'objet contenu dans la salle
     }
@@ -88,19 +88,26 @@ public class Salle
     public void entree(Joueur j)
     {   
          if (j.getPosition().equals(this.getPosition())){
-            this.setVisible(true);
-            if (!this.isVide())
-            {
-                this.getContenu().interaction(j);               
+            this.setVisible(true);}
+         if (this.getPosition().equals(this.getPlateau().getSortie().getPosition())){
+             System.out.println("Vous avez gagne !");
+             j.setGagnant(true);}
+         if (!this.isVide()){
+             this.getContenu().interaction(j); 
+            
             }
+            
         // activé quand le joueur se positionne sur la salle. Déclenche l'intéraction avec l'objet contenu dans la salle s'il y en a un
-        }
+        
     }
     @Override
     public  String toString()
     {
-        if(this.isVisible()) return this.getSymbole();
-        else return "░░░nv"; // salle non visible
+        if(this.isVisible())
+            if (this.getPosition().equals(this.getPlateau().getSortie().getPosition()))
+                return "Exit" ;
+            else return this.getSymbole();
+                return "#####"; // salle non visible
     }
     
     /**
