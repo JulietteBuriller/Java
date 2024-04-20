@@ -133,6 +133,7 @@ public class Joueur
             }
             else
             {
+                System.out.println("Grenade lancee !");
                 this.getSalle().setAcces(d);
                 this.avance (d);
                 this.nbgrenades--;
