@@ -75,7 +75,6 @@ public class Jeu
                          d2=new Direction(Lire.S("Entrez la direction de la salle dans laquelle vous souhaitez aller 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
 
                     }while(!d2.isValide());
-                    System.out.println("Vous avez avance.");
                     this.getJoueur().avance(d2);
                     break;
                 case 4: 
