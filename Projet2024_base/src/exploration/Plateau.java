@@ -36,6 +36,9 @@ public class Plateau
                 this.sortie= new Salle(new Position (this.getNbLig(),1,this),this);this.placeSalle(sortie);break;
             case 4 : 
                 this.sortie= new Salle(new Position (this.getNbLig(),this.getNbCol(),this),this);this.placeSalle(sortie);break;
+                
+        //On prend un nombre au hasard entre 1 et 4, et la sortie est choisie en fonction du nombre obtenu (la sortie est forcément un des 4 coins) 
+        //J'ai mis setPosition(Position position) en protected pour que ça marche
         }
     }
     public Salle getSortie(){
@@ -53,8 +56,11 @@ public class Plateau
     public int getNbSalles(){return this.getNbCol()*this.getNbLig();}
     public Salle getSalle(Position p)
     {
-        if(p.isValide()) return this.grille[p.getLig()-1][p.getCol()-1];
-        else return null;
+        
+        if(p.isValide()){
+            return this.grille[p.getLig()-1][p.getCol()-1];
+        }else {
+            return null;}
     }
     public Salle getSalle(int lig, int col){return this.getSalle(new Position(lig,col,this));}
 
@@ -102,6 +108,7 @@ public class Plateau
 
     public Plateau(int nbLig, int nbCol, Jeu jeu) 
     {
+        
         setJeu(jeu);
         Salle[][] grille1;
         grille1 = new Salle [nbLig][nbCol];
@@ -121,7 +128,6 @@ public class Plateau
         for(int indiceCategorie = 0 ; indiceCategorie<jeu.getListeCategories().length ; indiceCategorie++)
         {
             int nbObjets = ((Taille*jeu.getListeCategories()[indiceCategorie].getProportion())/nbTotal); // calcule le nombre d'objets nbObjets de la catégorie courante à créer
-            System.out.println(nbObjets+" de la catégorie "+jeu.getListeCategories()[indiceCategorie].getClasse().getSimpleName());
                 for(int compteurObjets = 1 ; compteurObjets<= nbObjets ; compteurObjets++,indiceObjet++){ // crée nbObjets instances de la catégorie courante
                     Objet o = jeu.getListeCategories()[indiceCategorie].getNouveau();
                     objets[indiceObjet] = o;
@@ -142,11 +148,13 @@ public class Plateau
                 tmp++;
             }
         }
+        
+        this.setSortie();
         this.setNouvelleSalle(new Position (Taille/2,this));
         this.setJoueur(new Joueur(new Position(((nbLig*nbCol)/2),this)));
         Joueur j = this.getJoueur();
         j.getSalle().setVisible(true);
-        this.setSortie();
+        
         this.setVisible(false);
         // Crée un joueur et initialise le plateau selon les spécifications du jeu (Gros boulot)
     }
