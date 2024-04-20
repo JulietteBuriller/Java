@@ -28,8 +28,8 @@ public class ScannerUnidirectionnel extends Outil
     }
       @Override
     public void interaction(Joueur j){
-     
-     j.recupere(this);
+        System.out.println("Cette salle contient un scanner unidirectionnel");
+        j.recupere(this);
     }
     public ScannerUnidirectionnel()
     {
