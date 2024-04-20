@@ -29,7 +29,6 @@ public class Jeu
     
     public boolean isFini()
     {
-        //return this.getJoueur().isPerdant()||();
         return (this.getJoueur().isGagnant()||this.getJoueur().isPerdant());
     }
     /**
@@ -46,14 +45,14 @@ public class Jeu
         while (!isFini())
         {
             System.out.println (this.getPlateau().toString());
-            System.out.println("Que vous voulez vous faire ?");
+            System.out.println("Que voulez vous faire ?");
             
-            System.out.println("1- Consulter votre materiel");
+            System.out.println("1- Consulter mon materiel");
             System.out.println("2- Lancer une grenade");
             System.out.println("3- Aller dans une salle accessible");
             System.out.println("4- Utiliser un outil");
             System.out.println("5- Abandonner");
-            int choix = Lire.i("Rentrer 1,2,3,4,ou 5");
+            int choix = Lire.i("Rentrer 1, 2, 3, 4, ou 5");
             
             switch (choix){
                 case 1:
@@ -68,7 +67,6 @@ public class Jeu
 
                         }while(!d1.isValide());
                         this.getJoueur().lanceGrenade(d1);
-                        
                     break;
                 case 3:
                     Direction d2 = new Direction();
@@ -77,6 +75,7 @@ public class Jeu
                          d2=new Direction(Lire.S("Entrez la direction de la salle dans laquelle vous souhaitez aller 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
 
                     }while(!d2.isValide());
+                    System.out.println("Vous avez avance.");
                     this.getJoueur().avance(d2);
                     break;
                 case 4: 
