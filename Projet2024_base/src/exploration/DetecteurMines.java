@@ -13,8 +13,8 @@ public class DetecteurMines extends Outil
 {
     @Override
     public void interaction(Joueur j){
-         System.out.println("Cette salle contient un detecteur de mines");
-         j.recupere(this);
+     System.out.println("Cette salle contient un detecteur de mines");
+     j.recupere(this);
     }
     public DetecteurMines()
     {
@@ -22,7 +22,7 @@ public class DetecteurMines extends Outil
         (
                 ">*",
                 "Detecteur de mines",
-                "un détecteur de mines, qui permet de connaître le nombre total de mines qui se situent dans les salles contiguës. Chaque utilisation de ce détecteur consomme 3 unités d'énergie.",
+                "un detecteur de mines, qui permet de connaître le nombre total de mines qui se situent dans les salles contigues. Chaque utilisation de ce detecteur consomme 3 unites d'energie.",
                 3//coût énergétique de la détection des mines
         );
     }    
@@ -34,10 +34,10 @@ public class DetecteurMines extends Outil
         
         j.getPosition().getSuivante();
         for (int i=0;i<8;i++){
-            if(j.getSalle().getVoisine(new Direction(i)).getContenu().equals(new Mine())) {
-                nb=nb+1;
-            } 
+            if(new Mine().equals(j.getSalle().getVoisine(new Direction(i)).getContenu())) {
+                nb=nb+1; }
         }
+        
         j.getOutils().enlève(this);
         System.out.println("il y a "+nb+" mines autour de vous.");
         
