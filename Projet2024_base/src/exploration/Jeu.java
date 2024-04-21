@@ -12,10 +12,10 @@ public class Jeu
 {
     private Plateau plateau;
     public Plateau getPlateau(){return this.plateau;}
-    public void setPlateau(Plateau plateau){ this.plateau = plateau;}  
+    private void setPlateau(Plateau plateau){ this.plateau = plateau;}  
 
     private Categorie[] listeCategories;
-    public void setListeCategories(Categorie[] listeCategories){this.listeCategories = listeCategories;}
+    private void setListeCategories(Categorie[] listeCategories){this.listeCategories = listeCategories;}
     public Categorie[] getListeCategories(){return this.listeCategories;}
 
     private int proportionVides;
@@ -39,15 +39,23 @@ public class Jeu
     public Joueur getJoueur(){return this.getPlateau().getJoueur();}
     
     public void initJeu(){
-        this.setPlateau(this.getPlateau());
-        this.joue();
+        System.out.println("EXPLODING GAME");
+        System.out.println("Le but du jeu est de trouver la sortie qui se situe dans l'une des salle du coin du plateau,\nmais gare aux mines si jamais vous entrez dans une salle qui en contient une c'est la mort assuree !");
+        System.out.println("Pour cela vous disposez de materiel de depart(grenades pour vous deplacer/unites d'energie pour utiliser des outils),\ncependant vous pouvez aussi en aquerir durant le jeu, en entrant dans certaines salles.");
+        
+        System.out.println("voici une petit rappel de ce qui existe :");
+        for(int i=0;i<this.getJoueur().getOutils().getTaille();i++){
+        System.out.println(this.getJoueur().getOutils().get(i).getDescriptif()+"("+this.getJoueur().getOutils().get(i).getSymbole()+")");
+        }
+        System.out.println("Voici le plateau, pour l'instant aucune salle n'est visible a part celle ou vous vous trouvez,\nelles apparaitrons quand vous entrerz a l'interieur. \nBonne chance !");
     }
     
-   public void joue()
+   private void joue()
     {
-        
+        this.initJeu();
         while (!isFini())
         {
+            System.out.println(" ");
             System.out.println (this.getPlateau().toString());
             System.out.println("Que voulez vous faire ?");
             
@@ -57,6 +65,7 @@ public class Jeu
             System.out.println("4- Utiliser un outil");
             System.out.println("5- Abandonner");
             int choix = Lire.i("Rentrer 1,2,3,4,ou 5");
+            System.out.println(" ");
             
             switch (choix){
                 case 1:
@@ -67,7 +76,7 @@ public class Jeu
                         Direction d1 = new Direction();
                         do
                         {
-                            d1=new Direction(Lire.S("Entrez la direction dans laquelle vous souhaitez lancer votre grenade en combinant 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
+                            d1=new Direction(Lire.S("Entrez la direction dans laquelle vous souhaitez lancer votre grenade \nen combinant 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
 
                         }while(!d1.isValide());
                         this.getJoueur().lanceGrenade(d1);
