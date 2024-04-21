@@ -37,10 +37,10 @@ public class ScannerUnidirectionnel extends Outil
         (
                 "}V",
                 "Scanner unidirectionnel",
-                "Détecte a travers les murs la distance —\n" +
-                "en nombre de salles vides traversee — à laquelle se situe le premier objet — ou le mur du\n" +
-                "plateau — dans une direction donnee. L'estimation de la distance est approximative : elle\n" +
-                "est à 20% de la distance près. L'utilisation de cet outil nécessite 2 unités d'Energie. ",
+                "Un scanner unidirectionnel detecte a travers les murs la distance (en nombre de salles vides traversee) \n" 
+                +"a laquelle se situe le premier objet (ou le mur du plateau )\n"
+                +"dans une direction donnee. L'estimation de la distance est approximative : elle\n" +
+                "est a 20% de la distance pres. L'utilisation de cet outil necessite 2 unites d'Energie. ",
                 2//coût énergétique de l'utilisation du scanner
         );
     }    
