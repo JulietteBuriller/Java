@@ -22,7 +22,7 @@ public class DetecteurMines extends Outil
         (
                 ">*",
                 "Detecteur de mines",
-                "un detecteur de mines, qui permet de connaître le nombre total de mines qui se situent dans les salles contigues. Chaque utilisation de ce detecteur consomme 3 unites d'energie.",
+                "Un detecteur de mines, qui permet de connaitre le nombre total de mines qui se situent dans les salles contigues. \n Chaque utilisation de ce detecteur consomme 3 unites d'energie.",
                 3//coût énergétique de la détection des mines
         );
     }    
@@ -30,16 +30,16 @@ public class DetecteurMines extends Outil
     @Override
     public void activation(Joueur j)
     {
-        int nb =0;
+        int n =0;
         
         j.getPosition().getSuivante();
         for (int i=0;i<8;i++){
             if(new Mine().equals(j.getSalle().getVoisine(new Direction(i)).getContenu())) {
-                nb=nb+1; }
+                n=n+1; }
         }
         
         j.getOutils().enlève(this);
-        System.out.println("il y a "+nb+" mines autour de vous.");
+        System.out.println("il y a "+n+" mines autour de vous.");
         
         
         
