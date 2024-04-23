@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package exploration;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -21,11 +19,11 @@ public class Plateau
 
     private boolean visible;
     public boolean isVisible(){return this.visible||Plateau.VISIBLE;}
-    public void setVisible(boolean visible){this.visible = visible;}
+    private void setVisible(boolean visible){this.visible = visible;}
 
      private Salle sortie;
     
-    public void setSortie (){
+    private void setSortie (){
         int nb=(int)(1+4*Math.random());
         switch (nb){
             case 1 : 
@@ -87,7 +85,7 @@ public class Plateau
     private void setNouvelleSalle(Position p){setNouvelleSalle(p, null);}
     
     private Joueur joueur;
-    public Joueur getJoueur(){return this.joueur;}
+    protected Joueur getJoueur(){return this.joueur;}
     private void setJoueur(Joueur joueur){this.joueur = joueur;}
     public Position getPosJoueur(){return this.getJoueur().getPosition();}
     
@@ -155,7 +153,6 @@ public class Plateau
         Joueur j = this.getJoueur();
         j.getSalle().setVisible(true);
         
-        this.setVisible(false);
         // Crée un joueur et initialise le plateau selon les spécifications du jeu (Gros boulot)
     }
 }
