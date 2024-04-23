@@ -48,11 +48,15 @@ package exploration;
         if(!j.getSalle().isPossible(this.directionCourante)){
             System.out.println("Il y a un mur !");
         }
-        else{if(new Mine().equals(salle.getContenu())){
+        else
+        {
+            if(new Mine().equals(salle.getContenu())){
                 salle.setObjet(null);
-            }else{
-            System.out.println("Il n'y a pas de mine dans cette salle vous avez perdu votre unitee de deminage");}
-           j.getOutils().enlève(this);}
+                System.out.println("la mine a ete desactivee");
+            }
+            else{
+                System.out.println("Il n'y a pas de mine dans cette salle vous avez perdu votre unite de deminage");}
+                j.getOutils().enlève(this);}
         
         }
         
