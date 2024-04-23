@@ -28,7 +28,7 @@ public class LesOutils
     }
     public void enlève(Outil o)
     {
-        if(!this.liste.contains(o)) System.out.println(this.getProprietaire().NomtoString()+" n'est pas en possession de "+o);
+        if(!this.isInList(o)) System.out.println(this.getProprietaire().NomtoString()+" n'est pas en possession de "+o);
         else this.liste.remove(o);
     }
     private Joueur proprietaire;
