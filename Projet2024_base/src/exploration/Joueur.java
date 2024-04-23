@@ -115,7 +115,7 @@ public class Joueur
    public void avance(Direction d)
     {
         if (this.getPosition().getSuivante(d).isValide() && this.getSalle().isPossible(d)){
-            System.out.println("Vous avez avance");
+            
             this.setPosition (this.getPosition().getSuivante(d));
         }
         else System.out.println("vous ne pouvez pas avancer dans cette direction");
@@ -135,11 +135,11 @@ public class Joueur
         if (this.getNbgrenades()>0) {
             if (this.getSalle().isPossible(d)==true)
             {
-                System.out.println("Un mur est déjà ouvert dans cette direction. Vous avez perdu votre grenade.");
+                System.out.println("Un mur est deja ouvert dans cette direction. Vous avez perdu votre grenade.");
             }
             else
             {
-                System.out.println("Grenade lancee !");
+                
                 this.getSalle().setAcces(d);
                 this.avance (d);
                 this.nbgrenades--;
