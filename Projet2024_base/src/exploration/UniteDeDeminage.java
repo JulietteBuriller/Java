@@ -12,6 +12,12 @@ package exploration;
     public class UniteDeDeminage extends Outil{
     
      private Direction directionCourante;
+
+    public void setDirectionCourante (Direction d){
+        this.directionCourante=d;
+        
+    public Direction getDirectionCourante(){
+        return this.directionCourante;
     
     @Override
     public void interaction(Joueur j){
@@ -31,18 +37,12 @@ package exploration;
         );
     }    
 
-    protected void setDirectionCourante()
-    {
-        do
-        {
-            this.directionCourante = new Direction(Lire.S("Entrez une direction en combinant 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
-        }while(!directionCourante.isValide());
-    }
+  
     
     @Override
     public void activation(Joueur j)
     {
-        this.setDirectionCourante();
+        this.setDirectionCourante(this.directionCourante.setDirectionQuelconque());
         Salle salle = j.getPosition().getPlateau().getSalle(j.getPosition().getSuivante(this.directionCourante));
 
         if(!j.getSalle().isPossible(this.directionCourante)){
