@@ -10,7 +10,13 @@ package exploration;
  */
 public class Excavatrice extends Outil{
     
-     private Direction directionCourante;
+    private Direction directionCourante;
+    
+    public void setDirectionCourante (Direction d){
+        this.directionCourante=d;
+        
+    public Direction getDirectionCourante(){
+        return this.directionCourante;
     
     @Override
     public void interaction(Joueur j){
@@ -31,18 +37,12 @@ public class Excavatrice extends Outil{
         );
     }    
 
-    protected void setDirectionCourante()
-    {
-        do
-        {
-            this.directionCourante = new Direction(Lire.S("Entrez une direction en combinant 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
-        }while(!directionCourante.isValide());
-    }
+ 
     
     @Override
     public void activation(Joueur j)
     {
-        this.setDirectionCourante();
+        this.setDirectionCourante(this.directionCourante.getDirectionQuelconque());
         j.getPosition().getPlateau().getSalle(j.getPosition()).setAcces(this.directionCourante);
         j.getOutils().enlève(this);
     }
