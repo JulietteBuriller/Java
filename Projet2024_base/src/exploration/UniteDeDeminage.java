@@ -42,7 +42,7 @@ package exploration;
     @Override
     public void activation(Joueur j)
     {
-        this.setDirectionCourante(this.directionCourante.setDirectionQuelconque());
+        this.setDirectionCourante(this.directionCourante.getDirectionQuelconque());
         Salle salle = j.getPosition().getPlateau().getSalle(j.getPosition().getSuivante(this.directionCourante));
 
         if(!j.getSalle().isPossible(this.directionCourante)){
