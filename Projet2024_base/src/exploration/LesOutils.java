@@ -20,6 +20,8 @@ public class LesOutils
         liste = new ArrayList<Outil>(); // Crée une liste d'outils vide
         liste.add(new ScannerUnidirectionnel()); // outil ajouté dès le départ
         liste.add(new DetecteurMines()); // idem
+        liste.add(new Excavatrice());
+        liste.add(new UniteDeDeminage());
     }
     public void ajoute(Outil o)
     {
