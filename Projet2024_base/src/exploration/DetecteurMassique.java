@@ -32,7 +32,7 @@ public class DetecteurMassique extends Outil {
                 "Detecteur massique unidirectionnel",
                 " permet de connaître approximativement (à 10% \n" +
                 "pres) le nombre d'objets — tous types confondus — situes dans une direction donnee. Son \n" +
-                "utilisation necessite 2 unités d'energie.",
+                "utilisation necessite 2 unites d'energie.",
                 2
         );
        
