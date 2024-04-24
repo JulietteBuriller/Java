@@ -15,9 +15,11 @@ package exploration;
 
     public void setDirectionCourante (Direction d){
         this.directionCourante=d;
+    }
         
     public Direction getDirectionCourante(){
         return this.directionCourante;
+    }
     
     @Override
     public void interaction(Joueur j){
