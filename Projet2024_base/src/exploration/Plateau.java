@@ -92,8 +92,8 @@ public class Plateau
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < this.grille[0].length + 2; i++) {
-            sb.append(BORD+" "+BORD+"  ");
+        for (int i = 0; i < this.getNbCol() + 2; i++) {
+            sb.append(BORD+"  "+BORD+"  ");
         }
             sb.append("\n");
 
@@ -110,7 +110,7 @@ public class Plateau
                  // Ajoute un retour à la ligne à la fin de chaque ligne
             }
         
-            for (int i = 0; i < this.grille[0].length + 2; i++) {
+            for (int i = 0; i < this.getNbCol() + 2; i++) {
                 sb.append(BORD+" "+BORD+"  ");
             }
             sb.append("\n");
