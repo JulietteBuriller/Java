@@ -14,10 +14,10 @@ public class Excavatrice extends Outil{
     
     public void setDirectionCourante (Direction d){
         this.directionCourante=d;
-        
+    }
     public Direction getDirectionCourante(){
         return this.directionCourante;
-    
+    }
     @Override
     public void interaction(Joueur j){
      System.out.println("Cette salle contient une Excavatrice");
