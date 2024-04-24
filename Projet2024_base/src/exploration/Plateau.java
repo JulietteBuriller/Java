@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class Plateau
 {
-    private static final String BORD = "░";
+    private static final String BORD = "B";
     public static boolean VISIBLE = false; // mode déboggage : si true, toutes les salles doivent afficher leur contenu
     private Jeu jeu;
     public Jeu getJeu(){return this.jeu;}
@@ -92,15 +92,28 @@ public class Plateau
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Salle[] grille1 : grille) {
-            for (int j = 0; j < grille1.length; j++) {
-                sb.append(grille1[j]);
-                if (j < grille1.length - 1) {
-                    sb.append(" "); // Ajoute un espace entre les éléments sur la même ligne
-                }
-            }
-            sb.append("\n"); // Ajoute un retour à la ligne à la fin de chaque ligne
+        for (int i = 0; i < this.grille[0].length + 2; i++) {
+            sb.append(BORD+" "+BORD+"  ");
         }
+            sb.append("\n");
+
+            for (Salle[] grille1 : grille) {
+                sb.append(BORD+" ");
+                for (int j = 0; j < grille1.length; j++) {
+                    sb.append(grille1[j]);
+                    if (j < grille1.length - 1) {
+                        sb.append(" "); // Ajoute un espace entre les éléments sur la même ligne
+                    }
+                }
+                sb.append(" "+BORD);
+                sb.append("\n");
+                 // Ajoute un retour à la ligne à la fin de chaque ligne
+            }
+        
+            for (int i = 0; i < this.grille[0].length + 2; i++) {
+                sb.append(BORD+" "+BORD+"  ");
+            }
+            sb.append("\n");
         return sb.toString();
     }
 
