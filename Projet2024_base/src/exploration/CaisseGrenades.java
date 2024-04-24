@@ -24,7 +24,7 @@ public class CaisseGrenades extends Objet
     
    public CaisseGrenades()
     {
-        this((int)(1+10*Math.random()));
+        this((int)(1+CaisseGrenades.MAX*Math.random()));
     }
     
     public static int getMAX() {
