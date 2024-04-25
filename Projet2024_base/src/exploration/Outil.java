@@ -4,6 +4,8 @@
  */
 package exploration;
 
+import java.util.Objects;
+
 /**
  *
  * @author jo
@@ -21,7 +23,7 @@ public abstract class Outil extends Objet
 
     public boolean isUtilisablePar(Joueur j)
     { 
-        return j.getUEnergie()>=this.conso /*&& j.possede(this)*/;
+        return j.getUEnergie()>=this.conso;
     }
     
     /**
@@ -31,19 +33,23 @@ public abstract class Outil extends Objet
     public String getInfos(){return "("+this.getSymbole()+")"+this.getNature()+this.getDescriptif();}
     @Override
     public int getNb(){
-        return 1;
+        return this.nb;
     }
     @Override
-    public abstract void interaction(Joueur j);
+    public void interaction(Joueur j){
+        System.out.println("Cette salle contenait un(e) "+ this.getNature()+".");
+        j.recupere(this);
+    }
     
     public void utilise(Joueur j)
     {
            if (this.isUtilisablePar(j))
            {
+            
             this.activation(j);
             j.setUEnergie(j.getUEnergie()- this.conso);
         }
-        else System.out.println("vous n'avez pas assez d'energie pour utiliser cet outil.");
+        else {System.out.println("vous n'avez pas assez d'energie pour utiliser cet outil.");}
         
         /*
             Utilisation de l'outil. Il faut vérifier que le joueur a assez d'énergie (Sinon, faire un message d'erreur),
@@ -60,12 +66,24 @@ public abstract class Outil extends Objet
         this.setConsommationEnergetique(conso);
     }
 
-    @Override
+    /**
+     *
+     * @param autre
+     * @return
+     */
     public boolean equals(Object autre)
     {
         if (this == autre) return true;
         if (autre == null) return false;
-        if (getClass() != autre.getClass())return false;
-        return true;
+        return getClass() == autre.getClass();
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + this.conso;
+        hash = 17 * hash + Objects.hashCode(this.descriptif);
+        return hash;
+    }
+    
 }
