@@ -115,7 +115,12 @@ public class Position
      */
     public Position(int lig, int col, Plateau p)
     {
-        this((lig-1)*p.getNbCol()+col-1,p);
+        if((lig>0&&lig<=p.getNbLig())&&(col>0&&col<=p.getNbCol())){
+            this.setRang((lig-1)*p.getNbCol()+col-1);
+            this.setPlateau(p);}
+        else{
+            this.setRang(-1);
+            this.setPlateau(p);}
     }
     
     /**
@@ -126,6 +131,7 @@ public class Position
     public Position getSuivante(Direction p)
     {
         return new Position (this.getLig()+p.getdLig(),this.getCol()+p.getdCol(),this.getPlateau());
+ 
     }
 
     /**
@@ -135,6 +141,7 @@ public class Position
     public Position getSuivante()
     {
         return new Position(this.getRang()+1,this.getPlateau());
+        
     }
 
     /**
