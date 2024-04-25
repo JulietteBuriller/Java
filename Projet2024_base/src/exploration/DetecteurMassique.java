@@ -15,14 +15,16 @@ public class DetecteurMassique extends Outil {
         
     private double getMarge(){return DetecteurMassique.MARGE_ERREUR;}
     
-    public void setDirectionCourante(Direction dir){
-        this.directionCourante=dir;
-    }
     public Direction getDirectionCourante(){
         return this.directionCourante;
                 
     }
-       
+    
+    protected void setDirectionCourante(Direction d)
+    {
+       this.directionCourante=d;
+    }
+    
     public DetecteurMassique()
     {
         super
@@ -30,8 +32,8 @@ public class DetecteurMassique extends Outil {
         (
                 ">O",
                 "Detecteur massique unidirectionnel",
-                " permet de connaître approximativement (à 10% \n" +
-                "pres) le nombre d'objets — tous types confondus — situes dans une direction donnee. Son \n" +
+                "Un Detecteur massique unidirectionnel permet de connaitre approximativement (a 10% \n" +
+                "pres) le nombre d'objets (tous types confondus) situes dans une direction donnee. Son \n" +
                 "utilisation necessite 2 unites d'energie.",
                 2
         );
@@ -41,28 +43,22 @@ public class DetecteurMassique extends Outil {
     @Override
     public void activation(Joueur j)
     {
-        this.setDirectionCourante(this.getDirectionCourante().getDirectionQuelconque());
+        this.setDirectionCourante(Direction.getDirectionQuelconque());
+        
         int obj=0;
         Position tmp = j.getPosition().getSuivante(directionCourante);
-        while (tmp!=null){
-            if (!j.getSalle().isVide()){
-                obj++;
+        
+        while ((tmp.getRang()!=-1)){System.out.println(tmp.getRang());
+            if(!tmp.getPlateau().getSalle(tmp).isVide()){ 
+            obj++;
             }
-            tmp=tmp.getSuivante(directionCourante);
-        }
+            System.out.println(this.directionCourante);
+            tmp=new Position (tmp.getLig()+this.directionCourante.getdLig(),tmp.getCol()+this.directionCourante.getdCol(),tmp.getPlateau());
+        }    
         int marge1=(int)Math.abs(obj-this.getMarge()*obj);
         int marge2=(int)Math.abs(obj+this.getMarge()*obj);
         j.getOutils().enlève(this);
         System.out.println("Dans cette direction, le nombre d'objets est compris entre "+marge1+" et "+marge2+".");
     }
-           
-      
-
-    
-    @Override
-    public void interaction(Joueur j){
-        System.out.println("Cette salle contient un detecteur massique unidirectionnel");
-        j.recupere(this);
-    }
-    
+          
 }
