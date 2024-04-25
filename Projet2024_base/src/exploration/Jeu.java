@@ -41,13 +41,13 @@ public class Jeu
     public void initJeu(){
         System.out.println("EXPLODING GAME");
         System.out.println("Le but du jeu est de trouver la sortie qui se situe dans l'une des salle du coin du plateau,\nmais gare aux mines si jamais vous entrez dans une salle qui en contient une c'est la mort assuree !");
-        System.out.println("Pour cela vous disposez du materiel de depart(grenades pour vous deplacer/unites d'energie pour utiliser des outils),\ncependant vous pouvez aussi en acquerir durant le jeu, en entrant dans certaines salles.");
+        System.out.println("Pour cela vous disposez de materiel de depart(grenades pour vous deplacer/unites d'energie pour utiliser des outils),\ncependant vous pouvez aussi en aquerir durant le jeu, en entrant dans certaines salles.");
         
         System.out.println("voici une petit rappel de ce qui existe :");
         for(int i=0;i<this.getJoueur().getOutils().getTaille();i++){
         System.out.println(this.getJoueur().getOutils().get(i).getDescriptif()+"("+this.getJoueur().getOutils().get(i).getSymbole()+")");
         }
-        System.out.println("Voici le plateau, pour l'instant aucune salle n'est visible a part celle ou vous vous trouvez,\nelles apparaitrons quand vous entrerez a l'interieur. \nBonne chance !");
+        System.out.println("Voici le plateau, pour l'instant aucune salle n'est visible a part celle ou vous vous trouvez,\nelles apparaitrons quand vous entrerz a l'interieur. \nBonne chance !");
     }
     
    private void joue()
@@ -72,23 +72,14 @@ public class Jeu
                         System.out.println("Vous avez :\n"+this.getJoueur().toString());
                         break;
                 case 2:
-                    
-                        Direction d1 = new Direction();
-                        do
-                        {
-                            d1=new Direction(Lire.S("Entrez la direction dans laquelle vous souhaitez lancer votre grenade \nen combinant 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
-
-                        }while(!d1.isValide());
+                        System.out.println("Entrez la direction dans laquelle vous souhaitez lancer votre grenade");
+                        Direction d1 =Direction.getDirectionHorizontaleVerticale();
                         this.getJoueur().lanceGrenade(d1);
                         
                     break;
                 case 3:
-                    Direction d2 = new Direction();
-                    do
-                    {
-                         d2=new Direction(Lire.S("Entrez la direction de la salle dans laquelle vous souhaitez aller \n 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
-
-                    }while(!d2.isValide());
+                    System.out.println("Entrez la direction de la salle dans laquelle vous souhaitez aller :");
+                    Direction d2 = Direction.getDirectionQuelconque();
                     this.getJoueur().avance(d2);
                     break;
                 case 4: 
