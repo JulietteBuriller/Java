@@ -133,12 +133,13 @@ public class Joueur
   public void lanceGrenade(Direction d)
     {
         if (this.getNbgrenades()>0) {
-            if (this.getSalle().isPossible(d)==true)
+            if (this.getSalle().isPossible(d))
             {
                 System.out.println("Un mur est deja ouvert dans cette direction. Vous avez perdu votre grenade.");
             }
             else
             { 
+                System.out.println("grenade lancee !");
                 this.getSalle().setAcces(d);
                 this.avance (d);
                 this.nbgrenades--;
