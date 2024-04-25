@@ -19,17 +19,9 @@ public class ScannerUnidirectionnel extends Outil
         return this.directionCourante;
     }
     
-    protected void setDirectionCourante()
+    protected void setDirectionCourante(Direction d)
     {
-        do
-        {
-            this.directionCourante = new Direction(Lire.S("Entrez une direction en combinant 'h','b','g','d' ou 'haut','bas','gauche','droite'"));
-        }while(!directionCourante.isValide());
-    }
-      @Override
-    public void interaction(Joueur j){
-     System.out.println("Cette salle contient un scanner unidirectionnel");
-     j.recupere(this);
+        this.directionCourante=d;
     }
     public ScannerUnidirectionnel()
     {
@@ -48,15 +40,15 @@ public class ScannerUnidirectionnel extends Outil
     @Override
     public void activation(Joueur j)
     {
-        this.setDirectionCourante();
+        this.setDirectionCourante(Direction.getDirectionQuelconque());
         int salle=0;
         Position tmp = j.getPosition().getSuivante(directionCourante);
-        
-        while ((tmp!=null && tmp.getPlateau().getSalle(tmp).isVide())){
+        while ((tmp.isValide() && tmp.getPlateau().getSalle(tmp).isVide())){
             tmp=tmp.getSuivante(directionCourante);
             salle=salle+1;
         }
         
+       
         int marge1=(int)Math.abs(salle-(this.getMarge()*salle));
         int marge2=(int)Math.abs(salle+(this.getMarge()*salle));
 
