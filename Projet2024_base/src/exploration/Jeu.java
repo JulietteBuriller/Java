@@ -41,13 +41,13 @@ public class Jeu
     public void initJeu(){
         System.out.println("EXPLODING GAME");
         System.out.println("Le but du jeu est de trouver la sortie qui se situe dans l'une des salle du coin du plateau,\nmais gare aux mines si jamais vous entrez dans une salle qui en contient une c'est la mort assuree !");
-        System.out.println("Pour cela vous disposez de materiel de depart(grenades pour vous deplacer/unites d'energie pour utiliser des outils),\ncependant vous pouvez aussi en aquerir durant le jeu, en entrant dans certaines salles.");
+        System.out.println("Pour cela vous disposez de materiel de depart(grenades pour vous deplacer/unites d'energie pour utiliser des outils),\ncependant vous pouvez aussi en acquerir durant le jeu, en entrant dans certaines salles.");
         
         System.out.println("voici une petit rappel de ce qui existe :");
         for(int i=0;i<this.getJoueur().getOutils().getTaille();i++){
         System.out.println(this.getJoueur().getOutils().get(i).getDescriptif()+"("+this.getJoueur().getOutils().get(i).getSymbole()+")");
         }
-        System.out.println("Voici le plateau, pour l'instant aucune salle n'est visible a part celle ou vous vous trouvez,\nelles apparaitrons quand vous entrerz a l'interieur. \nBonne chance !");
+        System.out.println("Voici le plateau, pour l'instant aucune salle n'est visible a part celle ou vous vous trouvez,\nelles apparaitrons quand vous entrerez a l'interieur. \nBonne chance !");
     }
     
    private void joue()
@@ -78,7 +78,7 @@ public class Jeu
                         
                     break;
                 case 3:
-                    System.out.println("Entrez la direction de la salle dans laquelle vous souhaitez aller :");
+                    System.out.println("Entrez la direction de la salle dans laquelle vous souhaitez aller");
                     Direction d2 = Direction.getDirectionQuelconque();
                     this.getJoueur().avance(d2);
                     break;
