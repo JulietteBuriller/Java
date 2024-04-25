@@ -65,7 +65,7 @@ public class Salle
      */
     public void setAcces(Direction d)
     {
-        if (this.isPossible(d)==false && this.getVoisine(d) != null) //si la liste de directions ne contient pas d (l'acces n'existe pas encore) et si la salle voisine existe
+        if (this.isPossible(d)==false && this.getVoisine(d) != null)
         {
             this.acces.add(d);
             this.getVoisine(d).acces.add(d.getInverse());
