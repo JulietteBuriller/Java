@@ -11,11 +11,7 @@ package exploration;
  */
 public class DetecteurMines extends Outil
 {
-    @Override
-    public void interaction(Joueur j){
-     System.out.println("Cette salle contient un detecteur de mines");
-     j.recupere(this);
-    }
+
     public DetecteurMines()
     {
         super
@@ -32,10 +28,14 @@ public class DetecteurMines extends Outil
     {
         int n =0;
         
-        j.getPosition().getSuivante();
+        
         for (int i=0;i<8;i++){
-            if(new Mine().equals(j.getSalle().getVoisine(new Direction(i)).getContenu())) {
-                n=n+1; }
+            Salle tmp=j.getSalle().getVoisine(new Direction(i));
+            if(tmp!=null){
+                if(new Mine().equals(j.getSalle().getVoisine(new Direction(i)).getContenu())) {
+                    n=n+1; }
+                }
+           
         }
         
         j.getOutils().enlève(this);
