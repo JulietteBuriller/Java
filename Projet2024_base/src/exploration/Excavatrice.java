@@ -10,20 +10,8 @@ package exploration;
  */
 public class Excavatrice extends Outil{
     
-    private Direction directionCourante;
-    
-    public void setDirectionCourante (Direction d){
-        this.directionCourante=d;
-    }
-    public Direction getDirectionCourante(){
-        return this.directionCourante;
-    }
-    @Override
-    public void interaction(Joueur j){
-     System.out.println("Cette salle contient une Excavatrice");
-     j.recupere(this);
-    }
-    
+     private Direction directionCourante;
+     
     public Excavatrice()
     {
         super
@@ -37,12 +25,15 @@ public class Excavatrice extends Outil{
         );
     }    
 
- 
+    protected void setDirectionCourante(Direction d)
+    {
+       this.directionCourante=d;
+    }
     
     @Override
     public void activation(Joueur j)
     {
-        this.setDirectionCourante(this.directionCourante.getDirectionQuelconque());
+        this.setDirectionCourante(Direction.getDirectionQuelconque());
         j.getPosition().getPlateau().getSalle(j.getPosition()).setAcces(this.directionCourante);
         j.getOutils().enlève(this);
     }
