@@ -68,7 +68,7 @@ public class Joueur
     }
     public void setNom()
     {
-        setNom(Lire.S("Quel est votre nom"));
+        setNom(Lire.S("Nom du joueur"));
     }
 
     private void setOutils(LesOutils outils){
@@ -118,7 +118,7 @@ public class Joueur
             
             this.setPosition (this.getPosition().getSuivante(d));
         }
-        else System.out.println("vous ne pouvez pas avancer dans cette direction");
+        else System.out.println("Vous ne pouvez pas avancer dans cette direction, vous avez perdu votre grenade");
         /*
             code : il faut gérer la sortie du plateau, le fait qu'un mur soit ou non ouvert et remettre à jour la position du joueur
         */
@@ -138,8 +138,7 @@ public class Joueur
                 System.out.println("Un mur est deja ouvert dans cette direction. Vous avez perdu votre grenade.");
             }
             else
-            {
-                
+            { 
                 this.getSalle().setAcces(d);
                 this.avance (d);
                 this.nbgrenades--;
