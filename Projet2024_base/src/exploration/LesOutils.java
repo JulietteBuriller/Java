@@ -49,7 +49,7 @@ public class LesOutils
 
     @Override
     public String toString() {
-        return "" + liste.toString() ;
+        return liste.toString();
     }
 
    
