@@ -10,19 +10,14 @@ package exploration;
  */
 public class ScannerCourtePortee extends Outil {
      
-    public void interaction(Joueur j)
-    {
-        System.out.println("Cette salle contient un scanner omnidirectionnel de courte portee.");
-        j.recupere(this); 
-    }
     public ScannerCourtePortee()
     {
         super
         (
                 "}O",
                 "Scanner omnidirectionnel de courte portee",
-                " il permet de detecter au travers des murs le \n" +
-                "nombre de salles contiguës contenant un objet. Son utilisation necessite 1 unité d'energie",
+                "Un Scanner omnidirectionnel de courte portee permet de detecter au travers des murs le \n" +
+                "nombre de salles contigues contenant un objet. Son utilisation necessite 1 unite d'energie",
                 1
         );
     }    
@@ -31,11 +26,13 @@ public class ScannerCourtePortee extends Outil {
     public void activation(Joueur j)
     {
         int nbobj =0;
-        
-        j.getPosition().getSuivante();
+
         for (int i=0;i<8;i++){
-            if (!j.getSalle().getVoisine(new Direction(i)).isVide())
-                nbobj++;
+            Salle tmp=j.getSalle().getVoisine(new Direction(i));
+            if(tmp!=null){
+                if (!tmp.isVide())
+                    nbobj++;
+            }
         }
         j.getOutils().enlève(this);
         System.out.println("il y a "+nbobj+" objets autour de vous.");
