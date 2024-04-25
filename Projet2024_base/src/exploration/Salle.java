@@ -27,13 +27,13 @@ public class Salle
     {
         return this.visible||this.getPlateau().isVisible();
     }
-    public void setVisible(boolean visible)
+    protected void setVisible(boolean visible)
     {
         this.visible = visible;
     }
     
     public Position getPosition(){return this.position;}
-    void setPosition(Position position){this.position = position;}
+    private void setPosition(Position position){this.position = position;}
     
     public Plateau getPlateau()
     {
@@ -47,7 +47,7 @@ public class Salle
      * @return une référence à un objet
      */
     public Objet getContenu() {return this.objet;}
-    public void setObjet(Objet objet){this.objet = objet;}
+    protected void setObjet(Objet objet){this.objet = objet;}
 
     public boolean isVide(){return this.getContenu()==null;};
     
@@ -71,16 +71,16 @@ public class Salle
             this.getVoisine(d).acces.add(d.getInverse());
             this.setVisible(true);
         }
-        else System.out.print("erreur");
+        else System.out.print("");
     }
     public String getSymbole(){
        if(this.getPlateau().getJoueur().getPosition().equals(this.getPosition()))
             if (this.isVide()) return "|  j|";
                 else 
-                    return "|"+this.getContenu().toString()+ " j|";
+                    return "|"+this.getContenu().getSymbolInd()+ " j|";
         else if (this.isVide()) return "|   |";
                 else 
-                    return "|"+this.getContenu().toString()+"|";
+                    return "|"+this.getContenu().getSymbolInd()+"|";
         
         // renvoie des espaces ou le toString de l'objet contenu dans la salle
     }
