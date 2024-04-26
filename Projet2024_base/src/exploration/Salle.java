@@ -77,10 +77,10 @@ public class Salle
        if(this.getPlateau().getJoueur().getPosition().equals(this.getPosition()))
             if (this.isVide()) return "|  j|";
                 else 
-                    return "|"+this.getContenu().getSymbolInd()+ " j|";
+                    return "|"+this.getContenu().getSymbole()+ " j|";
         else if (this.isVide()) return "|   |";
                 else 
-                    return "|"+this.getContenu().getSymbolInd()+"|";
+                    return "|"+this.getContenu().getSymbole()+"|";
         
         // renvoie des espaces ou le toString de l'objet contenu dans la salle
     }
