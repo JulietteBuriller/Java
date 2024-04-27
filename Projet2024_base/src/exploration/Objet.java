@@ -59,6 +59,10 @@ public abstract class Objet
     @Override
     public String toString()
     {
-        return this.getNb()+this.getSymbole();
+        return this.getSymbole();
+    }
+    public String getSymbolInd()
+    {
+        return this.getNb()+this.toString();
     }
 }
