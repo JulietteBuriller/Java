@@ -65,7 +65,7 @@ public class Salle
      */
     public void setAcces(Direction d)
     {
-        if (this.isPossible(d)==false && this.getVoisine(d) != null)
+        if (this.isPossible(d)==false && this.getVoisine(d) != null) //si la liste de directions ne contient pas d (l'acces n'existe pas encore) et si la salle voisine existe
         {
             this.acces.add(d);
             this.getVoisine(d).acces.add(d.getInverse());
@@ -77,10 +77,10 @@ public class Salle
        if(this.getPlateau().getJoueur().getPosition().equals(this.getPosition()))
             if (this.isVide()) return "|  j|";
                 else 
-                    return "|"+this.getContenu().getSymbole()+ " j|";
+                    return "|"+this.getContenu().getSymbolInd()+ " j|";
         else if (this.isVide()) return "|   |";
                 else 
-                    return "|"+this.getContenu().getSymbole()+"|";
+                    return "|"+this.getContenu().getSymbolInd()+"|";
         
         // renvoie des espaces ou le toString de l'objet contenu dans la salle
     }
