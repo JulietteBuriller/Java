@@ -33,7 +33,7 @@ public abstract class Outil extends Objet
     public String getInfos(){return "("+this.getSymbole()+")"+this.getNature()+this.getDescriptif();}
     @Override
     public int getNb(){
-        return this.nb;
+        return this.getnb();
     }
     @Override
     public void interaction(Joueur j){
@@ -71,6 +71,7 @@ public abstract class Outil extends Objet
      * @param autre
      * @return
      */
+    @Override
     public boolean equals(Object autre)
     {
         if (this == autre) return true;
@@ -85,5 +86,4 @@ public abstract class Outil extends Objet
         hash = 17 * hash + Objects.hashCode(this.descriptif);
         return hash;
     }
-    
 }
