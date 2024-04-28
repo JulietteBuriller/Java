@@ -71,20 +71,19 @@ public class Salle
             this.getVoisine(d).acces.add(d.getInverse());
             this.setVisible(true);
         }
-        else System.out.print("");
     }
     public String getSymbole(){
        if(this.getPlateau().getJoueur().getPosition().equals(this.getPosition()))
             if (this.isVide()) return "|  j|";
                 else 
-                    return "|"+this.getContenu().getSymbolInd()+ " j|";
+                    return "|"+this.getContenu().toString()+ " j|";
         else if (this.isVide()) return "|   |";
                 else 
-                    return "|"+this.getContenu().getSymbolInd()+"|";
+                    return "|"+this.getContenu().toString()+"|";
         
         // renvoie des espaces ou le toString de l'objet contenu dans la salle
     }
-    
+   
     public void entree(Joueur j)
     {   
          if (j.getPosition().equals(this.getPosition())){
@@ -94,6 +93,8 @@ public class Salle
              j.setGagnant(true);}
          if (!this.isVide()){
              this.getContenu().interaction(j); 
+         if(this.getContenu().getNb()==0)
+             this.setObjet(null);
             
             }
             
