@@ -118,7 +118,7 @@ public class Joueur
             
             this.setPosition (this.getPosition().getSuivante(d));
         }
-        else System.out.println("Vous ne pouvez pas avancer dans cette direction, vous avez perdu votre grenade");
+        else System.out.println("Vous ne pouvez pas avancer dans cette direction");
         /*
             code : il faut gérer la sortie du plateau, le fait qu'un mur soit ou non ouvert et remettre à jour la position du joueur
         */
@@ -127,19 +127,19 @@ public class Joueur
   public void recupere(Outil o)
     {
         this.outils.ajoute(o);
+        
         //Cette méthode est déclenchée par l'interaction avec l'outil
     }    
     
   public void lanceGrenade(Direction d)
     {
         if (this.getNbgrenades()>0) {
-            if (this.getSalle().isPossible(d))
+            if (this.getSalle().isPossible(d)==true)
             {
                 System.out.println("Un mur est deja ouvert dans cette direction. Vous avez perdu votre grenade.");
             }
             else
             { 
-                System.out.println("grenade lancee !");
                 this.getSalle().setAcces(d);
                 this.avance (d);
                 this.nbgrenades--;
@@ -154,8 +154,6 @@ public class Joueur
 
     @Override
     public String toString() {
-        return  "outils :" + outils.toString() + "\n nombre de grenades :" + nbgrenades + "\n nombre d'Energie :" + uEnergie ;
+        return   "nombre de grenades :" + nbgrenades + "; nombre d'Energie :" + uEnergie ;
     }
-    
-  
 }
