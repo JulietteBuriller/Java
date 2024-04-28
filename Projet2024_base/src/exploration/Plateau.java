@@ -19,7 +19,7 @@ public class Plateau
 
     private boolean visible;
     public boolean isVisible(){return this.visible||Plateau.VISIBLE;}
-    private void setVisible(boolean visible){this.visible = visible;}
+    public void setVisible(boolean visible){this.visible = visible;}
 
      private Salle sortie;
     
@@ -93,7 +93,7 @@ public class Plateau
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.getNbCol() + 2; i++) {
-            sb.append(BORD+"  "+BORD+"  ");
+            sb.append(BORD+" "+BORD+"  ");
         }
             sb.append("\n");
 
@@ -126,14 +126,16 @@ public class Plateau
         setGrille(grille1);
         
         int Taille=nbLig*nbCol;
+        
         Objet[] objets = new Objet[Taille];
         int nbTotal = jeu.getProportionVides();
         for(int i = 0 ; i<jeu.getListeCategories().length ; i++) // Parcours des catégories
         {
             nbTotal = nbTotal+jeu.getListeCategories()[i].getProportion();
         }
+        
         // nbTotal contient désormais la somme des proportions des différents objets à créer
-        /* crée autant d'objets qu'il y a de cases dans le tableau d'objets (ici 100) dans les proportions voulues */
+        /* crée autant d'objets qu'il y a de cases dans le tableau d'objets dans les proportions voulues */
       
         int indiceObjet = 0;
         for(int indiceCategorie = 0 ; indiceCategorie<jeu.getListeCategories().length ; indiceCategorie++)
