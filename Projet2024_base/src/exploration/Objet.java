@@ -14,7 +14,7 @@ public abstract class Objet
 {
     private String symbole;
     private String nature;
-    public int nb=1;
+    private int nb=1;
 
     public String getSymbole(){return this.symbole;}
     public String getNature(){return this.nature;}
@@ -22,7 +22,7 @@ public abstract class Objet
     
     private void setNature(String nature){this.nature = nature;}
     private void setSymbole(String symbole){this.symbole = symbole;}
-    private void setNb(int nb){this.nb=nb;}
+    public void setNb(int nb){this.nb=nb;}
 
     
     public abstract void interaction(Joueur j);
@@ -43,6 +43,7 @@ public abstract class Objet
     
     public Objet(String symbole, String nature)
     {
+        this.nb = 1;
         this.setSymbole(symbole);
         this.setNature(nature);
     }
@@ -52,17 +53,13 @@ public abstract class Objet
         if (this == autre) return true;
         if (autre == null) return false;
         if (getClass() != autre.getClass())return false;
-        //final Outil autreObjet = (Outil) autre;
         return Objects.equals(this.getSymbole(), autre.getSymbole());
     }
     
     @Override
     public String toString()
     {
-        return this.getSymbole();
+        return this.getNb()+this.getSymbole();
     }
-    public String getSymbolInd()
-    {
-        return this.getNb()+this.toString();
-    }
+    
 }
