@@ -19,13 +19,14 @@ package exploration;
         (
                 "(*)",
                 "Unite de deminage",
-                "une unite de deminage, qui desactive moyennant 2 unites d'energie une mine situee dans\n" +
+                "- Une unite de deminage, qui desactive moyennant 2 unites d'energie une mine situee dans\n" +
                 "une salle contigue accessible (le mur entre les salles doit deja avoir ete detruit).",
                 8//coût énergétique de la détection des mines
         );
     }    
 
-    protected void setDirectionCourante(Direction d){
+    protected void setDirectionCourante(Direction d)
+    {
         this.directionCourante=d;
     }
     
@@ -42,10 +43,6 @@ package exploration;
                 salle.setObjet(null);
             }else{
             System.out.println("Il n'y a pas de mine dans cette salle vous avez perdu votre unitee de deminage");}
-           j.getOutils().enlève(this);}
-        
         }
-        
-        
     }
-    
+}        
