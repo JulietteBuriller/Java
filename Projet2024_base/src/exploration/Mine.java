@@ -16,7 +16,7 @@ public class Mine extends Objet
     {
         System.out.println("Vous avez perdu...(boom!)");
         j.setPerdant(true);
-        this.nb=0;
+        this.setNb(0);
         
     }
 
