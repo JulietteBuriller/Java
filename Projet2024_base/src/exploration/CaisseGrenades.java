@@ -24,7 +24,7 @@ public class CaisseGrenades extends Objet
     
    public CaisseGrenades()
     {
-        this((int)(1+CaisseGrenades.MAX*Math.random()));
+        this((int)(1+10*Math.random()));
     }
     
     public static int getMAX() {
@@ -33,35 +33,3 @@ public class CaisseGrenades extends Objet
     public int getNbgren() {
         return nbgren;
     }
-    
-    private void setNbgren(int nbgren) {
-        this.nbgren = nbgren;
-    }
-    @Override
-    public int getNb(){
-        return nbgren;
-    }
-    @Override
-    public void interaction(Joueur j)
-    {
-           if (this.nbgren!=0){
-            int g=Lire.i("Combien souhaitez vous prendre de grenades ? il y en a "+nbgren+" disponibles. ");
-            if (this.nbgren>=g){
-                j.setNbgrenades(j.getNbgrenades()+g);
-                this.nbgren=this.nbgren-g;
-            }
-            else {
-                j.setNbgrenades(j.getNbgrenades()+this.nbgren);
-                System.out.println("Seulement "+this.nbgren+" grenades ont ete ajoutees car il n'en restait plus assez dans la reserve.");  
-                this.nbgren=0;
-            }
-        }
-        else System.out.println("Il ne reste plus de grenades dans cette reserve.");
-        
-        /* S'il reste des grenades dans cette réserve,
-           propose au joueur d'en prendre un certain nombre,
-           ce qui augmente les grenades du joueur et diminue d'autant cette réserve
-        */
-    }
-    
-}
