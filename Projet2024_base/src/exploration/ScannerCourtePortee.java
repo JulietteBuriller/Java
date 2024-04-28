@@ -16,7 +16,7 @@ public class ScannerCourtePortee extends Outil {
         (
                 "}O",
                 "Scanner omnidirectionnel de courte portee",
-                "Un Scanner omnidirectionnel de courte portee permet de detecter au travers des murs le \n" +
+                "- Un Scanner omnidirectionnel de courte portee permet de detecter au travers des murs le \n" +
                 "nombre de salles contigues contenant un objet. Son utilisation necessite 1 unite d'energie",
                 1
         );
@@ -34,7 +34,6 @@ public class ScannerCourtePortee extends Outil {
                     nbobj++;
             }
         }
-        j.getOutils().enlève(this);
         System.out.println("il y a "+nbobj+" objets autour de vous.");
         
     }
