@@ -20,13 +20,12 @@ public class LesOutils
         liste = new ArrayList<Outil>(); // Crée une liste d'outils vide
         liste.add(new ScannerUnidirectionnel()); // outil ajouté dès le départ
         liste.add(new DetecteurMines()); // idem
-        liste.add(new Excavatrice());
-        liste.add(new UniteDeDeminage());
+       
     }
     public void ajoute(Outil o)
     {
         if(this.isInList(o)) System.out.println(this.getProprietaire().NomtoString()+" est deja en possession de "+o);
-        else {this.liste.add(o); o.nb=0;}
+        else {this.liste.add(o); o.setNb(0);System.out.println("Vous l'avez recuperee !");}
     }
     public void enlève(Outil o)
     {
@@ -49,8 +48,6 @@ public class LesOutils
 
     @Override
     public String toString() {
-        return liste.toString();
+        return "" + liste.toString() ;
     }
-
-   
 }
