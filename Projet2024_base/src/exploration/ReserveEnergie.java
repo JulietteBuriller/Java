@@ -28,7 +28,7 @@ public class ReserveEnergie extends Objet
     }
     @Override
     public int getNb(){
-        return this.uenergie;
+        return this.getUenergie();
     }
     private void setUenergie(int uenergie) {
         this.uenergie = uenergie;
@@ -51,11 +51,10 @@ public class ReserveEnergie extends Objet
                 }
         }
         else 
-        System.out.println("il ne reste plus d'unites d'energie dans cette reserve.");}
+        System.out.println("il ne reste plus d'unites d'energie dans cette reserve.");
+    }
         /* S'il reste des unités d'énergie dans cette réserve,
            propose au joueur d'en prendre un certain nombre,
            ce qui augmente l'énergie du joueur et diminue d'autant cette réserve
         */
-    }
-   
-
+}
