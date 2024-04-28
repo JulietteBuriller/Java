@@ -32,7 +32,7 @@ public class DetecteurMassique extends Outil {
         (
                 ">O",
                 "Detecteur massique unidirectionnel",
-                "Un Detecteur massique unidirectionnel permet de connaitre approximativement (a 10% \n" +
+                "- Un Detecteur massique unidirectionnel permet de connaitre approximativement (a 10% \n" +
                 "pres) le nombre d'objets (tous types confondus) situes dans une direction donnee. Son \n" +
                 "utilisation necessite 2 unites d'energie.",
                 2
@@ -57,7 +57,6 @@ public class DetecteurMassique extends Outil {
         }    
         int marge1=(int)Math.abs(obj-this.getMarge()*obj);
         int marge2=(int)Math.abs(obj+this.getMarge()*obj);
-        j.getOutils().enlève(this);
         System.out.println("Dans cette direction, le nombre d'objets est compris entre "+marge1+" et "+marge2+".");
     }
           
