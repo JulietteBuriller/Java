@@ -18,12 +18,17 @@ public class Exploration
      */
     public static void main(String[] args)
     {
-        Categorie
-                grenades = new Categorie(4, CaisseGrenades.class),
-                mines = new Categorie(3, Mine.class),
+        
+       Categorie
+                grenades = new Categorie(5, CaisseGrenades.class),
+                mines = new Categorie(5, Mine.class),
+                unitededeminage = new Categorie(5, UniteDeDeminage.class),
                 energie = new Categorie(8, ReserveEnergie.class),
-                scannerDirectionnel = new Categorie(10, ScannerUnidirectionnel.class),
-                detecteurMine = new Categorie(2, DetecteurMines.class);
-        Jeu p = new Jeu(5, 11, 50, grenades,mines,energie,scannerDirectionnel,detecteurMine);
+                scannerCourtePortee = new Categorie(7, ScannerCourtePortee.class),
+                detecteurMassique = new Categorie(3, DetecteurMassique.class),
+                excavatrice = new Categorie(3, Excavatrice.class);
+        Jeu p = new Jeu(7, 7, 28, grenades,mines,energie,scannerCourtePortee,detecteurMassique,excavatrice,unitededeminage);
+       
+       
     }
 }
