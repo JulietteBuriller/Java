@@ -39,6 +39,42 @@ public class Plateau
         //J'ai mis setPosition(Position position) en protected pour que ça marche
         }
     }
+    
+     private void setCoins(){
+        Position p1= new Position(1,1,this);
+        Position p2= new Position(1,this.getNbCol(),this); 
+        Position p3= new Position(this.getNbLig(),1,this); 
+        Position p4= new Position(this.getNbLig(),this.getNbCol(),this); 
+        Objet o=new Mine();
+        this.setSortie();
+        if (this.getSortie().getPosition().equals(p1))
+        {
+            this.setNouvelleSalle(p2,o);
+            this.setNouvelleSalle(p3,o);
+            this.setNouvelleSalle(p4,o);
+        }
+        else
+            if (this.getSortie().getPosition().equals(p2))
+            {
+                this.setNouvelleSalle(p1,o);
+                this.setNouvelleSalle(p3,o);
+                this.setNouvelleSalle(p4,o);   
+            }
+            else
+                if (this.getSortie().getPosition().equals(p3))
+                {
+                    this.setNouvelleSalle(p2,o);
+                    this.setNouvelleSalle(p1,o);
+                    this.setNouvelleSalle(p4,o);
+                }
+                else
+                {
+                    this.setNouvelleSalle(p2,o);
+                    this.setNouvelleSalle(p3,o);
+                    this.setNouvelleSalle(p1,o);
+                }
+        
+    }
     public Salle getSortie(){
         return this.sortie;
     }
@@ -162,7 +198,7 @@ public class Plateau
             }
         }
         
-        this.setSortie();
+        this.setCoins();
         this.setNouvelleSalle(new Position (Taille/2,this));
         this.setJoueur(new Joueur(new Position(((nbLig*nbCol)/2),this)));
         Joueur j = this.getJoueur();
